@@ -1,8 +1,11 @@
 # 4ZP6-Capstone-Project
 
 Group name: Ultra Ice Project (Subjected to change)
+
 Our project members consists of: Ananthan Kanagasabai, Andrei Ciontea, Curran Tam, Joseph Nguyen, Victor Siu
+
 Internal Supervisor: Professor Wenbo He
+
 External Supervisor: Doctor Sarah Khan
 
 Project: ARV Regimen Generator
