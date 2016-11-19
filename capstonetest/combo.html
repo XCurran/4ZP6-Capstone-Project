@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	
+		<meta charset="UTF-8"> 
+		<meta name="description" content="HIV Regimen Generator possible combinations">
+		<meta name="keywords" content="HIV, AIDS, gov, government, schedule, regimen, generator">
+		<meta name="author" content="McMaster University Computer Science Capstone Team 14">
+		
+		<!-- auto scales on phones -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		
+		<!-- defining browser details and linking to css-->
+		<title> HRV.org </title>
+		<link type="text/css" rel="stylesheet" href="css/form.css"/>
+		<link rel="icon" href="images/pill.png"> 
+		
+	</head>
+
+	<body>
+		<div id="banner">
+			<img id="banner-img" src="images/logo.png" height="120" width="400" alt="HRG.org header banner">
+		</div>
+		
+		<div id="header">
+			<ul>
+				<!--listing all the options on the header-->
+				<li> <a href="main.html"> Home </a> </li>
+				<li> About </li>
+				<li> Contact Us </li>
+			</ul>
+		</div>
+		<p id="disclaimer"> *Disclaimer* None of the following information you provide will be stored. All details inputted will be removed immediately after you close the browser. </p>
+		<form>
+			<fieldset>
+				<legend> Possible Regimen Combinations </legend>
+				<p>Select three medication to use together as part of the regimen:</p>
+				<div id="combo1">
+					<h4> First Medication </h4>
+					<form>
+						 <input type="radio" name="med" value="ZDV" checked> Zidovudine (ZDV)<br>
+						 <input type="radio" name="med" value="3TC"> Lamivudine (3TC)<br>
+						 <input type="radio" name="med" value="TDF"> Tenofovir disproxil fumarate (TDF)<br>
+						 <input type="radio" name="med" value="d4T"> Stavudine (d4T)
+					</form>
+				</div>
+				
+				<div id="combo2">
+					<h4> Second Medication </h4>
+					<form>
+						 <input type="radio" name="med" value="ABC" checked> Abacavir (ABC)<br>
+						 <input type="radio" name="med" value="FTC"> Emtricitabine (FTC)<br>
+						 <input type="radio" name="med" value="TAF"> Tenofovir alafenamide fumarate (TAF)<br>
+						 <input type="radio" name="med" value="ddl"> Didanosine (ddl)
+					</form>
+				</div>
+				
+				<div id="combo3">
+					<h4> Third Medication </h4>
+					<form>
+						 <input type="radio" name="med" value="LPV/r" checked> Lopinivir (LPV/r)<br>
+						 <input type="radio" name="med" value="ATZ" > Atazanavir (ATZ)<br>
+						 <input type="radio" name="med" value="NFV" > Nelfinavir (NFV)<br>
+						 <input type="radio" name="med" value="DRV" > Darunavir (DRV)<br>
+						 <input type="radio" name="med" value="DTG" > Dolutegravir (DTG)<br>
+						 <input type="radio" name="med" value="EVG" > Elvitegravir (EVG)<br>
+						 <input type="radio" name="med" value="RAL" > Raltegravir (RAL)
+					</form>
+				</div>
+				
+				
+				<div id="submit-buttons">
+						<input type="submit" value="Continue"> 
+				</div>
+			</fieldset>
+		</form>
+		
+		<div id="return"> 
+			<a href="main.html"> Return to Home </a>
+		</div>
+	</body>
+
+</html>
