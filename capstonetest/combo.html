@@ -34,40 +34,23 @@
 		<form>
 			<fieldset>
 				<legend> Possible Regimen Combinations </legend>
-				<p>Select three medication to use together as part of the regimen:</p>
-				<div id="combo1">
-					<h4> First Medication </h4>
+				<p>Select a medication combination to use from the following list of compatible regimen:</p>
+				<div id="combo">
+					<h3> Compatible Regimen: </h3>
 					<form>
-						 <input type="radio" name="med" value="ZDV" checked> Zidovudine (ZDV)<br>
-						 <input type="radio" name="med" value="3TC"> Lamivudine (3TC)<br>
-						 <input type="radio" name="med" value="TDF"> Tenofovir disproxil fumarate (TDF)<br>
-						 <input type="radio" name="med" value="d4T"> Stavudine (d4T)
+						 <input type="radio" name="med" value="combo1" checked> Zidovudine(ZDV) + Abacavir(ABC) + Lopinivir(LPV/r)<br>
+						 <input type="radio" name="med" value="combo2"> Zidovudine(ZDV) + Abacavir(ABC) + Atazanavir(ATZ)<br>
+						 <input type="radio" name="med" value="combo3"> Zidovudine(ZDV) + Abacavir(ABC) + Nelfinavir(NFV)<br>
+						 <input type="radio" name="med" value="combo4"> Zidovudine(ZDV) + Lamivudine(3TC) + Lopinivir(LPV/r)<br>
+						 <input type="radio" name="med" value="combo5"> Zidovudine(ZDV) + Tenofovir disproxil fumarate(TDF) + Lopinivir(LPV/r)<br>
+						 <input type="radio" name="med" value="combo6"> Zidovudine(ZDV) + Tenofovir alafenamide fumarate(TAF) + Lopinivir(LPV/r)<br>
+						 <input type="radio" name="med" value="combo7"> Lamivudine(3TC) + Abacavir(ABC) + Lopinivir(LPV/r)<br>
+						 <input type="radio" name="med" value="combo8"> Lamivudine(3TC) + Stavudine(d4T) + Nelfinavir(NFV)<br>
+						 <input type="radio" name="med" value="combo9"> Lamivudine(3TC) + Didanosine(ddl) + Elvitegravir(EVG)<br>
+						 <input type="radio" name="med" value="combo10"> Lamivudine(3TC) + Didanosine(ddl) + Raltegravir(RAL)<br>
+						 <input type="radio" name="med" value="combo11"> Lamivudine(3TC) + Didanosine(ddl) + Atazanavir(ATZ)<br>
 					</form>
-				</div>
-				
-				<div id="combo2">
-					<h4> Second Medication </h4>
-					<form>
-						 <input type="radio" name="med" value="ABC" checked> Abacavir (ABC)<br>
-						 <input type="radio" name="med" value="FTC"> Emtricitabine (FTC)<br>
-						 <input type="radio" name="med" value="TAF"> Tenofovir alafenamide fumarate (TAF)<br>
-						 <input type="radio" name="med" value="ddl"> Didanosine (ddl)
-					</form>
-				</div>
-				
-				<div id="combo3">
-					<h4> Third Medication </h4>
-					<form>
-						 <input type="radio" name="med" value="LPV/r" checked> Lopinivir (LPV/r)<br>
-						 <input type="radio" name="med" value="ATZ" > Atazanavir (ATZ)<br>
-						 <input type="radio" name="med" value="NFV" > Nelfinavir (NFV)<br>
-						 <input type="radio" name="med" value="DRV" > Darunavir (DRV)<br>
-						 <input type="radio" name="med" value="DTG" > Dolutegravir (DTG)<br>
-						 <input type="radio" name="med" value="EVG" > Elvitegravir (EVG)<br>
-						 <input type="radio" name="med" value="RAL" > Raltegravir (RAL)
-					</form>
-				</div>
-				
+				</div>			
 				
 				<div id="submit-buttons">
 						<input type="submit" value="Continue"> 
