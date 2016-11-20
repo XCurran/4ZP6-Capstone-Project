@@ -18,7 +18,7 @@
 		<link type="text/css" rel="stylesheet" href="css/main.css"/>
 		<link rel="icon" href="images/pill.png"> 
 		
-		<audio id="mysound" src="audio/eurobeats2.wav"></audio>
+		<!--<audio id="mysound" src="audio/eurobeats2.wav"></audio>-->
 	</head>
 	
 	<body>
@@ -37,9 +37,11 @@
 			<img id="logo" src="images/logo.png" height="250" width="650" alt="main logo">
 			<br>
 			<!-- button for going to 'form' page -->
-			<a href="form.html"> <img id="start-button" src="images/start.png" height="50" width="200" alt="start" onmouseover="this.src='images/start_hover.png'; changeFirst(true); document.getElementById('mysound').play();" onmouseout="this.src='images/start.png'; changeFirst(false); document.getElementById('mysound').pause();"> </a>
-
+			<a href="form.html"> <img id="start-button" src="images/start.png" height="50" width="200" alt="start" onmouseover="this.src='images/start_hover.png';" onmouseout="this.src='images/start.png';"> </a>
+			<!-- changeFirst(true); document.getElementById('mysound').play();-->
+			<!-- changeFirst(false); document.getElementById('mysound').pause();-->
 			
+			<!--
 			<script type="text/javascript" language="javascript">
 
 				function changeFirst(isHover) {
@@ -51,6 +53,7 @@
 				}
 			
 			</script>
+			-->
 			
 	</body>
 
