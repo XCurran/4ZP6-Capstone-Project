@@ -29,10 +29,16 @@
 \newpage
 
 \tableofcontents
-\listoffigures
-\listoftables
-\newpage
 
+\section*{Revision History}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Date}  & \textbf{Comments} \\ \hline
+November 2, 2017 & Revision 0 of Test Plan created \\ \hline
+March 26, 2017 & Revision 1 of Test Plan created \\ \hline
+\end{tabular}
+
+\newpage
 
 \section{Overview}
 This document will detail the testing that will be done to our website. The document covers:
@@ -83,14 +89,12 @@ Manual testing will be done to all components of the website where the website c
 \end{tcolorbox}
 
 \begin{tcolorbox}
-\textbf{Test 1.3.3:} \\ \\
+\textbf{Test 1.3.1.1:} \\ \\
 \textbf{Description:} Test the website on different operating systems. \\ \\
 \textbf{Type}: Manual \\ \\
 \textbf{Tester(s)}: Developers \\ \\
 \textbf{Pass:} The website must be accessible on Windows, Linux and Mac operating systems. \\ \\
 \end{tcolorbox}
-
-
 
 \subsubsection{User Experience Testing}
 The manual testing will be done by humans in order for the developers to get an idea of the user experience. Testing will be done individually by people not involved in the development of the website. Each tester will have to complete a survey detailing their experience with the website. Testers will be used multiple times depending on any additions being made to the website.
@@ -135,43 +139,194 @@ The algorithm for our web application will be tested first, as it is the most im
 
 \subsection{Web Application Mechanics Testing}
 The mechanics of our HIV medication choosing algorithm will be tested in both a manual and automated environment. Manual tests will be performed to mimic the perspective of the users and automated tests will ensure the algorithm\textquotesingle s correctness.
+%%%%%%%%%%%%%%
 
+\subsubsection{Landing Page Testing}
+\begin{tcolorbox}
+\textbf{Test 3.1.1.1: Displaying Website} \\ \\
+\textbf{Description:} Tests whether or not a website can be displayed correctly in a browser. \\ \\
+\textbf{Type}: Manual \\ \\
+\textbf{Tester(s)}: Developers \\ \\
+\textbf{Pass:} Website displays correctly in a browser. \\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 3.1.1.2: Patient Information Form Page} \\ \\
+\textbf{Description: Tests whether someone can access the Patient Information Form page by clicking a button on this page} \\ \\
+\textbf{Type}: Manual \\ \\
+\textbf{Tester(s)}: Developers \\ \\
+\textbf{Pass:} Browser displays Patient Information Form page.  \\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 3.1.1.3: About Page} \\ \\
+\textbf{Description:} Tests whether someone can access the About page by clicking a button on this page \\ \\
+\textbf{Type}: Manual \\ \\
+\textbf{Tester(s)}: Developers \\ \\
+\textbf{Pass:} Browser displays About page. \\ \\
+\end{tcolorbox}
+
+\subsubsection{About Page Testing}
+\begin{tcolorbox}
+\textbf{Test 3.1.2.1: Home Page} \\ \\
+\textbf{Description:} Tests whether someone can access the Home page by clicking a button on this page\\ \\
+\textbf{Type}: Manual \\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:}  Browser displays Home page.\\ \\
+\end{tcolorbox}
+
+\subsubsection{Patient Information Form Page Testing}
+\begin{tcolorbox}
+\textbf{Test 3.1.3.1: Calculate BSA} \\ \\
+\textbf{Description:} Tests whether the BSA can be calculated after a user has entered the height and weight and clicked on the “BSA Calculate” button\\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:}  BSA is displayed correctly\\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 3.1.3.2: No information given} \\ \\
+\textbf{Description:} Tests whether the page will display an error if the required information is not entered\\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:}  Browser displays a message with an error. \\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 3.1.3.3: All information given} \\ \\
+\textbf{Description:} Tests whether the website will display the Combination Selection page when the submit button is pressed after all of the correct information is entered\\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:}  Browser displays the Combination Selection page. \\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 3.1.3.4: Only required information given} \\ \\
+\textbf{Description:} Tests whether the website will display the Combination Selection page when the submit button is pressed after only the required information is entered correctly.\\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:} Browser displays the Combination Selection page. \\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 3.1.3.5: Home Page} \\ \\
+\textbf{Description:} Tests whether someone can access the Home page by clicking a button on this page\\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:}  Browser displays Home page.\\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 3.1.3.6: About Page} \\ \\
+\textbf{Description:} Tests whether someone can access the About page by clicking a button on this page\\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:}  Browser displays About page.\\ \\
+\end{tcolorbox}
+
+\subsubsection{Combination Selection Page Testing}
+\begin{tcolorbox}
+\textbf{Test 3.1.4.1: Properly Select Regimen} \\ \\
+\textbf{Description:} Tests whether the website will display the Medical Results page when the submit button is pressed after all of the correct information is entered\\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:}  Browser displays the Medical Results page.\\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 3.1.4.2: All information given} \\ \\
+\textbf{Description:} Tests whether the website will display the Combination Selection page when the submit button is pressed after all of the correct information is entered \\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:} Browser displays the Combination Selection page.\\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 3.1.4.3: Too much information given} \\ \\
+\textbf{Description:} Tests whether the website will display an error when the submit button is pressed after too much information is entered \\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:} Browser displays the an error.\\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 3.1.4.4: Home Page} \\ \\
+\textbf{Description:} Tests whether someone can access the Home page by clicking a button on this page \\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:} Browser displays Home page.\\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 3.1.4.5: About Page} \\ \\
+\textbf{Description:} Tests whether someone can access the About page by clicking a button on this page \\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:} Browser displays About page.\\ \\
+\end{tcolorbox}
+
+\subsubsection{Medical Results Page Testing}
+\begin{tcolorbox}
+\textbf{Test 3.1.5.1: Link Works} \\ \\
+\textbf{Description:} Tests whether the website will display the correct website after a link is clicked on the page. \\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:} Browser displays the correct website.\\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 3.1.5.2: Home Page} \\ \\
+\textbf{Description:} Tests whether someone can access the Home page by clicking a button on this page \\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:} Browser displays Home page.\\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 3.1.5.3: About Page} \\ \\
+\textbf{Description:} Tests whether someone can access the About page by clicking a button on this page \\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:} Browser displays About page.\\ \\
+\end{tcolorbox}
+
+%%%%%%%
 \subsection{Input Testing}
 
 \begin{tcolorbox}
-\textbf{Test 3.1.1.1: Valid input} \\ \\
+\textbf{Test 3.2.1: Valid input} \\ \\
 \textbf{Description:} Tests that valid inputs (in the forms) will return the desired output. \\ \\
-\textbf{Type}: Automated \\ \\
+\textbf{Type}: Manual \\ \\
 \textbf{Tester(s)}: Developers \\ \\
 \textbf{Pass:} Valid inputs will return the output that is intended for that set of inputs. (Large number of possibilities which is why it should be automated). \\ \\
 \end{tcolorbox}
 
 \begin{tcolorbox}
-\textbf{Test 3.1.1.2: Warning message from invalid input} \\ \\
+\textbf{Test 3.2.2: Warning message from invalid input} \\ \\
 \textbf{Description:} Tests that invalid inputs (in the forms) will return a warning message. \\ \\
-\textbf{Type}: Automated \\ \\
+\textbf{Type}: Manual \\ \\
 \textbf{Tester(s)}: Developers \\ \\
 \textbf{Pass:} Invalid inputs must return a detailed warning to the user to correct their values. Invalid inputs include using numbers, letters and special characters where it is specified not to. \\ \\
 \end{tcolorbox}
 
 \begin{tcolorbox}
-\textbf{Test 3.1.1.3: Recommended drug combination } \\ \\
+\textbf{Test 3.2.3: Recommended drug combination } \\ \\
 \textbf{Description:} Example inputs: 14 yrs old (textbox), can only take medication orally (check box), has history of liver problems (checkbox), resistance to primary class of drugs (dropdown) (Further research must be done to find all combinations and they will be included in revision 1 of the test plan). \\ \\
-\textbf{Type}: Automated \\ \\
+\textbf{Type}: Manual \\ \\
 \textbf{Tester(s)}: Developers \\ \\
 \textbf{Pass:} Example Output: The recommended drug combination is tenofovir + lamivudine (or emtricitabine) + efavirenz. \\ \\
 \end{tcolorbox}
 
 \begin{tcolorbox}
-\textbf{Test 3.1.1.4: Submit button} \\ \\
+\textbf{Test 3.2.4: Submit button} \\ \\
 \textbf{Description:} Testing that submit button links to accurate page. \\ \\
-\textbf{Type}: Automatic \\ \\
+\textbf{Type}: Manual \\ \\
 \textbf{Tester(s)}: Developers \\ \\
 \textbf{Pass:} The website must link to an online page along with another local page. \\ \\
 \end{tcolorbox}
 
 \begin{tcolorbox}
-\textbf{Test 3.1.1.5: Color of valid input} \\ \\
+\textbf{Test 3.2.5: Color of valid input} \\ \\
 \textbf{Description:} Testing responsiveness for valid inputs.  \\ \\
 \textbf{Type}: Manual \\ \\
 \textbf{Tester(s)}: Developers \\ \\
@@ -179,7 +334,7 @@ The mechanics of our HIV medication choosing algorithm will be tested in both a 
 \end{tcolorbox}
 
 \begin{tcolorbox}
-\textbf{Test 3.1.1.6: Reset button} \\ \\
+\textbf{Test 3.2.6: Reset button} \\ \\
 \textbf{Description:} Testing the reset button.  \\ \\
 \textbf{Type}: Manual \\ \\
 \textbf{Tester(s)}: Developers \\ \\
@@ -187,7 +342,7 @@ The mechanics of our HIV medication choosing algorithm will be tested in both a 
 \end{tcolorbox}
 
 \begin{tcolorbox}
-\textbf{Test 3.1.1.7: Confirm button} \\ \\
+\textbf{Test 3.2.7: Confirm button} \\ \\
 \textbf{Description:} Testing the form confirmation button. \\ \\
 \textbf{Type}: Manual \\ \\
 \textbf{Tester(s)}: Developers \\ \\
@@ -195,7 +350,7 @@ The mechanics of our HIV medication choosing algorithm will be tested in both a 
 \end{tcolorbox}
 
 \begin{tcolorbox}
-\textbf{Test 3.1.1.8: Print button} \\ \\
+\textbf{Test 3.2.8: Print button} \\ \\
 \textbf{Description:} Testing the print button.  \\ \\
 \textbf{Type}: Manual \\ \\
 \textbf{Tester(s)}: Developers \\ \\
@@ -247,7 +402,7 @@ The following tests display the non-functional requirements in the Requirements 
 The testing group will test the website to ensure that the following non-functional requirements will be fulfilled.
 
 \begin{tcolorbox}
-\textbf{Test 4.2..1.1: Location} \\ \\
+\textbf{Test 4.2.1.1: Location} \\ \\
 \textbf{Description:} The user can access the website anywhere. \\ \\
 \textbf{Type}: Functional  \\ \\
 \textbf{Tester(s)}: Testing group \\ \\
