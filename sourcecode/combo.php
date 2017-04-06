@@ -84,13 +84,6 @@
 					?>
 				</p>
 				
-					<form>
-						 <input type="radio" name="med" value="combo1" checked> Zidovudine(ZDV) + Abacavir(ABC) + Lopinivir(LPV/r)<br>
-						 <input type="radio" name="med" value="combo2"> Zidovudine(ZDV) + Abacavir(ABC) + Atazanavir(ATZ)<br>
-						 <input type="radio" name="med" value="combo3"> Zidovudine(ZDV) + Abacavir(ABC) + Nelfinavir(NFV)<br>
-						 <input type="radio" name="med" value="combo4"> Zidovudine(ZDV) + Lamivudine(3TC) + Lopinivir(LPV/r)<br>
-						 <input type="radio" name="med" value="combo5"> Zidovudine(ZDV) + Tenofovir disproxil fumarate(TDF) + Lopinivir(LPV/r)<br>
-					</form>
 				</div>
 				
 				<div id="submit-buttons">
