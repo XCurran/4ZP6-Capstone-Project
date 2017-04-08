@@ -68,11 +68,13 @@
 		$pdo = new PDO('mysql:host=localhost;dbname=medications', $user, $pass);//PDO access database
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		try {
-				$sql = "SELECT `ID`, `Name`, `Description`, `ageMin`, `ageMax`, `weightMin`, `weightMax`, `tannerStage`, `renalDysfunction`, `osteoporosis`, `hepatitis`, `hypercholesterolemia`, `pregnancy`, `cholestasis`, `neuropsychiatric`, `insulinResistance`, `hyperglycemia`, `diabetes`, `medicationType`, `sideEffects`, `dosage`, `linkname`
+				$sql = "SELECT *
 				FROM `medications` WHERE `medications`.`ID` = ? OR `medications`.`ID` = ?  OR `medications`.`ID` = ?  OR `medications`.`ID` = ?" ;
+				
 				$result = $pdo->prepare($sql);
 				$result->execute(array(1,7,8,10)); 
 				$result = $result->fetchAll();
+				
 			} catch (PDOException $e) {
 				echo $e->getMessage();
 			}
@@ -97,10 +99,6 @@
 				echo ('<br />');
 				echo ('<b>Potential side effects: </b>');	
 				echo $Regimen['sideEffects'];
-				echo ('<br />');
-				echo ('<b>More information at: </b>');	
-				echo ('<td><a href="https://www.drugs.com/cdi/'.$Regimen['linkname'].'.html"> https://www.drugs.com/cdi/'.$Regimen['linkname'].'.html </a></td>');
-				echo ('<br />');
 				echo ('</fieldset>');
 				echo ('<br />');
 					}

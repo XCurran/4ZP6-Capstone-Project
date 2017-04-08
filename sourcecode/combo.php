@@ -56,32 +56,93 @@
 					
 					<p> <?php 
 					
-						$age= $_POST['years'];
+						$agey= $_POST['years'];
+						$agem= $_POST['months'];
 						$tanner= $_POST['tanner-stage'];
 						
 						
 						$arr = array();
-						$i = 0;
 						
-						foreach ($result as $medication) {
+						if (($agey == 0 && $agem >= 0.5) || ($agey<2 and $agey>0)){
 									
-							if ($medication['ageMin' ] < $age){
-								
-								if ($medication['ageMax'] > $age){
-								
-									if ($medication['tannerStage'] < $tanner){
+							echo'<b>CHOOSE TWO NRTIs</b>';
+							echo'<br>';
+							echo'<br>';
+							
+							echo '<span><input type="checkbox" name="Abacavir" value="Abacavir"> Abacavir  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+							echo'<br>';
+							echo'<br>';
+									
+							echo '<span><input type="checkbox" name="Didanosine" value="Didanosine"> Didanosine &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+							echo'<br>';
+							echo'<br>';
+							
+							echo '<span><input type="checkbox" name="Lamivudine" value="Lamivudine"> Lamivudine  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+							echo'<br>';
+							echo'<br>';
+							
+							echo '<span><input type="checkbox" name="Stavudine" value="Stavudine"> Stavudine  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+							echo'<br>';
+							echo'<br>';
+							
+							echo '<span><input type="checkbox" name="Tenofovir Disoproxil Fumarate" value="Tenofovir Disoproxil Fumarate"> Tenofovir Disoproxil Fumarate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+							echo'<br>';
+							echo'<br>';
+							
+							echo '<span><input type="checkbox" name="Zidovudine" value="Zidovudine"> Zidovudine  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+							echo'<br>';
+							echo'<br>';
 										
-										array_push($arr, $medication['Name']);
-										echo '<span><input type="checkbox" name=',$medication['Name'],' value=',$medication['Name'],'> ',$medication['Name'],'  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-										$i = $i + 1;
-										echo ' ';
-									}
-								}
-							}
 							
 						}
-			
-					?>
+						
+						else if (($agey == 2 && $agem >= 0) || ($agey<3 and $agey>2)){
+							echo'<b>CHOOSE TWO NRTIs</b>';
+							echo'<br>';
+							echo'<br>';
+							
+							echo '<span><input type="checkbox" name="Abacavir" value="Abacavir"> Abacavir  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+							echo'<br>';
+							echo'<br>';
+									
+							echo '<span><input type="checkbox" name="Didanosine" value="Didanosine"> Didanosine &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+							echo'<br>';
+							echo'<br>';
+							
+							echo '<span><input type="checkbox" name="Lamivudine" value="Lamivudine"> Lamivudine  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+							echo'<br>';
+							echo'<br>';
+							
+							echo '<span><input type="checkbox" name="Stavudine" value="Stavudine"> Stavudine  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+							echo'<br>';
+							echo'<br>';
+							
+							echo '<span><input type="checkbox" name="Tenofovir Disoproxil Fumarate" value="Tenofovir Disoproxil Fumarate"> Tenofovir Disoproxil Fumarate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+							echo'<br>';
+							echo'<br>';
+							
+							echo '<span><input type="checkbox" name="Zidovudine" value="Zidovudine"> Zidovudine  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+							echo'<br>';
+							echo'<br>';
+							
+							echo '<br>';
+							echo '<b>CHOOSE ONE</b>';
+							echo '<br>';
+							echo '<br>';
+							
+							echo '<span><input type="checkbox" name="Lopinavir/Ritonavir" value="Lopinavir/Ritonavir"> Lopinavir/Ritonavir &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+							echo'<br>';
+							echo'<br>';
+							
+							echo '<span><input type="checkbox" name="Raltegravir" value="Raltegravir"> Raltegravir  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+							echo'<br>';
+							echo'<br>';
+						}
+						
+						else if (($agey == 3 && $agem >= 0) || ($agey<12 and $agey>3)){
+							
+						}
+					?>  
 				</p>
 				
 				</div>

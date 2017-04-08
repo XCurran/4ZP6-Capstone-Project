@@ -40,7 +40,7 @@
 			<fieldset>
 				<legend> Patient Information </legend>
 				<br>
-				Age: <input type="number" name="years" placeholder="Years" min="0" max="100"> <input type="number" name="months" placeholder="Months" min="0" max="11" > </br></br>
+				Age: <input type="number" name="years" placeholder="Years" min="0" max="100"> <input type="number" name="months" placeholder="Months" min="0" max="11.5" step=0.5 > </br></br>
 				
 				Height: <input type="number" id="height" name="height" placeholder="Centimetres (cm)" min="0" max="300"> &nbsp;&nbsp; Weight: <input type="number" id="weight" name="weight" placeholder="Kilograms (kg)" min="0" max="500"> &nbsp; <input type="button" onclick="updateBSA(document.getElementById('height').value, document.getElementById('weight').value);" value="Calculate BSA"> <br>
 				
