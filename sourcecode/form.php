@@ -74,15 +74,7 @@
 				<span><input type="checkbox" name="med-issues" value="Hypercholesterolemia"> Hypercholesterolemia  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> <span><input type="checkbox" name="med-issues" value="Pregnant"> Pregnant or risk of becoming pregnant &nbsp;&nbsp; </span> <span><input type="checkbox" name="med-issues" value="Cholestasis"> Cholestasis </span><br>
 				<span><input type="checkbox" name="med-issues" value="Neuropsychiatric"> Neuropsychiatric issues   &nbsp;&nbsp; </span> <span><input type="checkbox" name="med-issues" value="InsulinRes"> Insulin resistance, hyperglycemia/diabetes </span> <br><br>
 		
-				Resistence(s):   
-				<input list="resistences" id="list" name="resistence" placeholder="If applicable">
-					<datalist id="resistences">
-						<option value="med A">
-						<option value="med B">
-						<option value="med C">
-						<option value="med D">
-						<option value="med E">
-					</datalist> <br> <br>
+				
 				
 				What kind of medications can the patient take: <br>
 				<input type="radio" name="medtype" value="suspension" checked> Suspension only <br>
@@ -97,19 +89,12 @@
 				Other medical allergies: <br>
 				<textarea name="other-allergies" placeholder="Specify any that applies." rows="5" cols="50"></textarea> <br><br>
 				
-				<div class="g-recaptcha" data-sitekey="6LensgsUAAAAADgvOT26Ha1bNEp1sPqkgPO76Had"></div> <br>
-				
 				<div id="submit-buttons">
+				
 						<input type="submit" value="Submit"> 
-						<!--
-						<button type="submit" style="border: 0; background: transparent">
-							<img src="images/submit.png" width="150" height="50" alt="submit" onmouseover="this.src='../images/submit_hover.png'" onmouseout="this.src='images/submit.png'">
-						</button> 
 						
-						 &nbsp;&nbsp; 
-						<input type="reset" value="Reset">Reset</button>
-						-->
 				</div>
+				
 			</fieldset>
 		</form>
 		

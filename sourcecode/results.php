@@ -36,15 +36,16 @@
 		<br>
 		<fieldset id="patinfo">
 			<legend> Patient Information </legend>
-			<b> Age: </b> <?php echo $_POST['years']; ?>  Years and <?php echo $_POST['months']; ?> Months. <br>
-			<b> BSA: </b> <?php echo $_POST['bsa']; ?> <br>
-			<b> Weight: </b> <?php echo $_POST['weight']; ?> kilograms (kg)  &nbsp;&nbsp; <b> Height: </b> <?php echo $_POST['height']; ?> centimetres (cm) <br><br>
-			<b> Tanner stage: </b> <?php echo $_POST['tanner-stage']; ?> &nbsp;&nbsp; <b> HLA status: </b> <?php echo $_POST['HLA-status']; ?> <br><br>
+			<b> Age: </b> <?php session_start(); echo $_SESSION['years'] ?>  Years and <?php echo $_SESSION['months']; ?> Months. <br>
+			<b> BSA: </b> <?php echo $_SESSION['bsa']; ?> <br>
+			<b> Weight: </b> <?php echo $_SESSION['weight']; ?> kilograms (kg)  &nbsp;&nbsp; <b> Height: </b> <?php echo $_SESSION['height']; ?> centimetres (cm) <br><br>
+			<b> Tanner stage: </b> <?php echo $_SESSION['tanner-stage']; ?> &nbsp;&nbsp; <b> HLA status: </b> <?php echo $_SESSION['HLA-status']; ?> <br><br>
 			<b> Medical Issues: </b> 
+			
 			<?php
 				
-				if (isset($_POST['med-issues'])) {
-					echo $_POST['med-issues'];
+				if (isset($_SESSION['med-issues'])) {
+					echo $_SESSION['med-issues'];
 				}
 				
 			?>
@@ -53,11 +54,15 @@
 			
 				
 			<br><br>
-			<b>Patient prefers medicine: </b> Suspension only <br><br>
+			<b>Patient prefers medicine: </b>
 			<b> Allergies: </b> n/a <br> <br>
 			<b> Additional Notes: </b> n/a <br>
+			
+			
 		</fieldset>
 		<br>
+		
+		
 		
 		<h1> Patient's Selected Regimen: </h1>
 		<?php 
@@ -67,42 +72,35 @@
 		$pass = '';
 		$pdo = new PDO('mysql:host=localhost;dbname=medications', $user, $pass);//PDO access database
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		try {
-				$sql = "SELECT *
-				FROM `medications` WHERE `medications`.`ID` = ? OR `medications`.`ID` = ?  OR `medications`.`ID` = ?  OR `medications`.`ID` = ?" ;
-				
-				$result = $pdo->prepare($sql);
-				$result->execute(array(1,7,8,10)); 
-				$result = $result->fetchAll();
-				
-			} catch (PDOException $e) {
+		try{
+			$result = $pdo->query('SELECT * FROM `medication_table`');
+		} catch (PDOException $e) {
 				echo $e->getMessage();
-			}
+		} 
+
+			?>		
 			
-			?>			
-	
 	
 		<?php
+			
+			
+			
 			foreach ($result as $Regimen) {
-				echo ('<h2>');
-				echo $Regimen['medicationType'];
-				echo ('</h2>');
-				echo ('<fieldset id=pillone">');
-				echo ('<legend>');
-				echo $Regimen['Name'];
-				echo ('</legend>');
-				echo ('<b>Description: </b>');
-				echo $Regimen['Description'];
-				echo ('<br />');
-				echo ('<b>Suggested dosage: </b>');	
-				echo $Regimen['dosage'];
-				echo ('<br />');
-				echo ('<b>Potential side effects: </b>');	
-				echo $Regimen['sideEffects'];
-				echo ('</fieldset>');
-				echo ('<br />');
+				
+				if (isset($_POST[$Regimen['SName']])) {
+					
+					echo ('<h2>');
+					echo $Regimen['Type'];
+					echo ('</h2>');
+					echo ('<fieldset id="pillone">');
+					echo ('<legend>');
+					echo $Regimen['Name'];
+					echo ('</legend>');
+					echo ('<br />');
+					echo ('</fieldset>');
 					}
-							?>
+			}				
+			?>
 		
 		
 		

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -17,22 +19,7 @@
 		
 	</head>
 
-	<body>
-	
-		<?php 
-
-		
-		$user = 'root';
-		$pass = '';
-		$pdo = new PDO('mysql:host=localhost;dbname=medications', $user, $pass);//PDO access database
-		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		try {
-			$result = $pdo->query('SELECT * FROM `medications`');
-		} catch (PDOException $e) {
-			echo $e->getMessage();
-		}
-			
-			?>			
+	<body>		
 			
 		<div id="banner">
 			<img id="banner-img" src="images/logo.png" height="120" width="400" alt="HRG.org header banner">
@@ -47,19 +34,43 @@
 			</ul>
 		</div>
 		<p id="disclaimer"> *Disclaimer* None of the following information you provide will be stored. All details inputted will be removed immediately after you close the browser. </p>
-		<form action="results.php" method="post">
+
+		<form onsubmit="Sub()" action="results.php" method="post">
+		<?php
+		session_start();
+    $_SESSION['years'] = $_POST['years'];
+	$_SESSION['months'] = $_POST['months'];
+	$_SESSION['bsa'] = $_POST['bsa'];
+	$_SESSION['weight'] = $_POST['weight'];
+	$_SESSION['height'] = $_POST['height'];
+	$_SESSION['tanner-stage'] = $_POST['tanner-stage'];
+	$_SESSION['HLA-status'] = $_POST['HLA-status'];
+	$_SESSION['med-issues'] = $_POST['med-issues'];
+	$_SESSION['allergies'] = $_POST['allergies'];
+	$_SESSION['other-allergies'] = $_POST['other-allergies'];
+	
+	
+?>
 			<fieldset>
-				<legend> Possible Regimen Combinations </legend>
-				<p>Select a medication combination to use from the following list of compatible regimen:</p>
+				<legend> Possible Regimen Selections </legend>
 				<div id="combo">
 					<h3> Compatible Regimen: </h3>
 					
 					<p> <?php 
-					
+						$user = 'root';
+						$pass = '';
+						$pdo = new PDO('mysql:host=localhost;dbname=medications', $user, $pass);//PDO access database
+						$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+						try {
+							$result = $pdo->query('SELECT * FROM `medication_table`');
+							$result2 = $pdo->query('SELECT * FROM `medication_table`');
+						} catch (PDOException $e) {
+							echo $e->getMessage();
+						}
+						
 						$agey= $_POST['years'];
 						$agem= $_POST['months'];
 						$tanner= $_POST['tanner-stage'];
-						
 						
 						$arr = array();
 						
@@ -69,31 +80,30 @@
 							echo'<br>';
 							echo'<br>';
 							
-							echo '<span><input type="checkbox" name="Abacavir" value="Abacavir"> Abacavir  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-							echo'<br>';
-							echo'<br>';
-									
-							echo '<span><input type="checkbox" name="Didanosine" value="Didanosine"> Didanosine &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+							foreach ($result as $arv) {
+							
+								if ($arv['Type'] == ('NRTI' || 'NRTI (rare)')){
+									echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
+									echo'<br>';
+									echo'<br>';
+								}		
+							}
+							
+							echo'<b>AND</b>';
 							echo'<br>';
 							echo'<br>';
 							
-							echo '<span><input type="checkbox" name="Lamivudine" value="Lamivudine"> Lamivudine  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-							echo'<br>';
-							echo'<br>';
+							foreach ($result2 as $arv) {
+								if ($arv['Name'] == ('Lopinavir/Ritonavir (LPV/r, Kaletra)')){
+										echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
+										echo'<br>';
+										echo'<br>';
+									}
+							}
 							
-							echo '<span><input type="checkbox" name="Stavudine" value="Stavudine"> Stavudine  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-							echo'<br>';
-							echo'<br>';
-							
-							echo '<span><input type="checkbox" name="Tenofovir Disoproxil Fumarate" value="Tenofovir Disoproxil Fumarate"> Tenofovir Disoproxil Fumarate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-							echo'<br>';
-							echo'<br>';
-							
-							echo '<span><input type="checkbox" name="Zidovudine" value="Zidovudine"> Zidovudine  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-							echo'<br>';
-							echo'<br>';
-										
-							
+							echo '<div id="submit-buttons">';
+								echo '<input type="submit" value="Continue">'; 
+							echo '</div>';	
 						}
 						
 						else if (($agey == 2 && $agem >= 0) || ($agey<3 and $agey>2)){
@@ -101,56 +111,162 @@
 							echo'<br>';
 							echo'<br>';
 							
-							echo '<span><input type="checkbox" name="Abacavir" value="Abacavir"> Abacavir  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-							echo'<br>';
-							echo'<br>';
-									
-							echo '<span><input type="checkbox" name="Didanosine" value="Didanosine"> Didanosine &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-							echo'<br>';
-							echo'<br>';
+							foreach ($result as $arv) {
 							
-							echo '<span><input type="checkbox" name="Lamivudine" value="Lamivudine"> Lamivudine  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-							echo'<br>';
-							echo'<br>';
+								if ($arv['Type'] == ('NRTI' || 'NRTI (rare)')){
+									echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
+									echo'<br>';
+									echo'<br>';
+								}		
+							}
 							
-							echo '<span><input type="checkbox" name="Stavudine" value="Stavudine"> Stavudine  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-							echo'<br>';
-							echo'<br>';
-							
-							echo '<span><input type="checkbox" name="Tenofovir Disoproxil Fumarate" value="Tenofovir Disoproxil Fumarate"> Tenofovir Disoproxil Fumarate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-							echo'<br>';
-							echo'<br>';
-							
-							echo '<span><input type="checkbox" name="Zidovudine" value="Zidovudine"> Zidovudine  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-							echo'<br>';
-							echo'<br>';
-							
-							echo '<br>';
 							echo '<b>CHOOSE ONE</b>';
 							echo '<br>';
 							echo '<br>';
 							
-							echo '<span><input type="checkbox" name="Lopinavir/Ritonavir" value="Lopinavir/Ritonavir"> Lopinavir/Ritonavir &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-							echo'<br>';
-							echo'<br>';
+							foreach ($result2 as $arv) {
 							
-							echo '<span><input type="checkbox" name="Raltegravir" value="Raltegravir"> Raltegravir  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-							echo'<br>';
-							echo'<br>';
+								if ($arv['Name'] == ('Lopinavir/Ritonavir (LPV/r, Kaletra)')){
+									
+									echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
+									echo'<br>';
+									echo'<br>';
+								}
+								
+								else if ($arv['Name'] == ('Raltegravir (RAL, Isentress)')){
+									
+									echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
+									echo'<br>';
+									echo'<br>';
+								}		
+							}
+							echo '<div id="submit-buttons">';
+								echo '<input type="submit" value="Continue">'; 
+							echo '</div>';	
 						}
 						
-						else if (($agey == 3 && $agem >= 0) || ($agey<12 and $agey>3)){
+						else if (($agey == 3 && $agem >= 0) || ($agey<12 and $agey>3)) {
+							echo'<b>CHOOSE TWO NRTIs</b>';
+							echo'<br>';
+							echo'<br>';
 							
+							foreach ($result as $arv) {
+							
+								if ($arv['Type'] == ('NRTI' || 'NRTI (rare)')){
+									echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
+									echo'<br>';
+									echo'<br>';
+								}		
+							}
+							
+							echo '<b>CHOOSE ONE</b>';
+							echo '<br>';
+							echo '<br>';
+							
+							foreach ($result2 as $arv) {
+								
+								if ($arv['Name'] == ('Lopinavir/Ritonavir (LPV/r, Kaletra)')){
+										
+										echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
+										echo'<br>';
+										echo'<br>';
+									}
+									
+								else if ($arv['Name'] == ('Raltegravir (RAL, Isentress)')){
+									
+									echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
+									echo'<br>';
+									echo'<br>';
+								}
+								
+								else if ($arv['Name'] == ('Efavirenz (EFV, Sustiva)')){
+									
+									echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
+									echo'<br>';
+									echo'<br>';
+								}
+								
+								else if ($arv['Name'] == ('Atazanavir (ATV, Reyataz)')){
+									
+									echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
+									echo'<br>';
+									echo'<br>';
+								}
+								
+								else if ($arv['Name'] == ('Darunavir (DRV, Prezista)')){
+									
+									echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'(twice daily)';
+									echo'<br>';
+									echo'<br>';
+								}
+								
+							}
+							echo '<div id="submit-buttons">';
+								echo '<input type="submit" value="Continue">'; 
+							echo '</div>';	
+							
+						}
+						
+						else if (($agey >= 12) && (($tanner == 1) || ($tanner == 2) || ($tanner == 3))) {
+							echo'<b>CHOOSE TWO NRTIs</b>';
+							echo'<br>';
+							echo'<br>';
+							
+							foreach ($result as $arv) {
+							
+								if ($arv['Type'] == ('NRTI' || 'NRTI (rare)')){
+									echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
+									echo'<br>';
+									echo'<br>';
+								}		
+							}
+							
+							echo '<b>CHOOSE ONE</b>';
+							echo '<br>';
+							echo '<br>';
+							
+							foreach ($result2 as $arv) {
+								
+								if ($arv['Name'] == ('Dolutegravir (DTG, Tivicay)')){
+										
+										echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
+										echo'<br>';
+										echo'<br>';
+									}
+									
+								else if ($arv['Name'] == ('Elvitegravir (EVG, VITEKTA)')){
+									
+									echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
+									echo'<br>';
+									echo'<br>';
+								}
+								
+								else if ($arv['Name'] == ('Darunavir (DRV, Prezista)')){
+									
+									echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'(once daily)';
+									echo'<br>';
+									echo'<br>';
+								}
+								
+								else if ($arv['Name'] == ('Atazanavir (ATV, Reyataz)')){
+									
+									echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
+									echo'<br>';
+									echo'<br>';
+								}
+							}
+							
+							echo '<div id="submit-buttons">';
+								echo '<input type="submit" value="Continue">'; 
+							echo '</div>';	
 						}
 					?>  
 				</p>
 				
-				</div>
+
 				
-				<div id="submit-buttons">
-						<input type="submit" value="Continue"> 
-				</div>
 			</fieldset>
+			
 		</form>
 		
 		<div id="return"> 
