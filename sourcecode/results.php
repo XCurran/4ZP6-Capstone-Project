@@ -87,7 +87,7 @@
 			
 			foreach ($result as $Regimen) {
 				
-				if (isset($_POST[$Regimen['SName']])) {
+				if ($_POST['nrti1'] == $Regimen['SName'] || $_POST['nrti2'] == $Regimen['SName'] || $_POST['extra'] == $Regimen['SName']) {
 					
 					echo ('<h2>');
 					echo $Regimen['Type'];

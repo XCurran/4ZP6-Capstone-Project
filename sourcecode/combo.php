@@ -8,6 +8,8 @@
 		<meta name="description" content="HIV Regimen Generator possible combinations">
 		<meta name="keywords" content="HIV, AIDS, gov, government, schedule, regimen, generator">
 		<meta name="author" content="McMaster University Computer Science Capstone Team 14">
+		<script type="text/javascript" src="comboscript.js"></script>
+
 		
 		<!-- auto scales on phones -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -35,7 +37,7 @@
 		</div>
 		<p id="disclaimer"> *Disclaimer* None of the following information you provide will be stored. All details inputted will be removed immediately after you close the browser. </p>
 
-		<form onsubmit="Sub()" action="results.php" method="post">
+		<form onsubmit="return check()" action="results.php" method="post">
 		<?php
 		session_start();
     $_SESSION['years'] = $_POST['years'];
@@ -64,6 +66,7 @@
 						try {
 							$result = $pdo->query('SELECT * FROM `medication_table`');
 							$result2 = $pdo->query('SELECT * FROM `medication_table`');
+							$result3 = $pdo->query('SELECT * FROM `medication_table`');
 						} catch (PDOException $e) {
 							echo $e->getMessage();
 						}
@@ -72,202 +75,188 @@
 						$agem= $_POST['months'];
 						$tanner= $_POST['tanner-stage'];
 						
-						$arr = array();
+						echo'<b>CHOOSE THE FIRST NRTI</b>';
+						echo'<br>';
+						echo'<br>';
 						
+						foreach ($result as $arv) {
+						
+							if ($arv['Type'] == ('NRTI' || 'NRTI (rare)')){
+								if ($arv['SName'] == ('Abacavir')){
+									echo '<span><input type="radio" id="',$arv['SName'],'" name="nrti1" value="',$arv['SName'],'" checked >',$arv['Name'],'';
+									echo'<br>';
+									echo'<br>';
+								}
+								else{
+									echo '<span><input type="radio" id="',$arv['SName'],'" name="nrti1" value="',$arv['SName'],'" >',$arv['Name'],'';
+									echo'<br>';
+									echo'<br>';
+								}
+								
+							}		
+						}
+						echo'<b>CHOOSE THE SECOND NRTI</b>';
+						echo'<br>';
+						echo'<br>';
+						
+						foreach ($result2 as $arv) {
+						
+							if ($arv['Type'] == ('NRTI' || 'NRTI (rare)')){
+								if ($arv['SName'] == ('Didanosine')){
+									echo '<span><input type="radio" id="',$arv['SName'],'1" name="nrti2" value="',$arv['SName'],'" checked >',$arv['Name'],'';
+									echo'<br>';
+									echo'<br>';
+								}
+								else{
+									echo '<span><input type="radio" id="',$arv['SName'],'1" name="nrti2" value="',$arv['SName'],'" >',$arv['Name'],'';
+									echo'<br>';
+									echo'<br>';
+								}
+								
+							}		
+						}
+							
 						if (($agey == 0 && $agem >= 0.5) || ($agey<2 and $agey>0)){
 									
-							echo'<b>CHOOSE TWO NRTIs</b>';
-							echo'<br>';
-							echo'<br>';
-							
-							foreach ($result as $arv) {
-							
-								if ($arv['Type'] == ('NRTI' || 'NRTI (rare)')){
-									echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
-									echo'<br>';
-									echo'<br>';
-								}		
-							}
 							
 							echo'<b>AND</b>';
 							echo'<br>';
 							echo'<br>';
 							
-							foreach ($result2 as $arv) {
+							foreach ($result3 as $arv) {
 								if ($arv['Name'] == ('Lopinavir/Ritonavir (LPV/r, Kaletra)')){
-										echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
+										echo '<span><input type="radio" name="extra" value="',$arv['SName'],'" checked >',$arv['Name'],'';
 										echo'<br>';
 										echo'<br>';
 									}
 							}
 							
-							echo '<div id="submit-buttons">';
-								echo '<input type="submit" value="Continue">'; 
-							echo '</div>';	
 						}
 						
 						else if (($agey == 2 && $agem >= 0) || ($agey<3 and $agey>2)){
-							echo'<b>CHOOSE TWO NRTIs</b>';
-							echo'<br>';
-							echo'<br>';
 							
-							foreach ($result as $arv) {
-							
-								if ($arv['Type'] == ('NRTI' || 'NRTI (rare)')){
-									echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
-									echo'<br>';
-									echo'<br>';
-								}		
-							}
 							
 							echo '<b>CHOOSE ONE</b>';
 							echo '<br>';
 							echo '<br>';
 							
-							foreach ($result2 as $arv) {
+							foreach ($result3 as $arv) {
 							
 								if ($arv['Name'] == ('Lopinavir/Ritonavir (LPV/r, Kaletra)')){
 									
-									echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
+									echo '<span><input type="radio" name="extra" value="',$arv['SName'],'" checked >',$arv['Name'],'';
 									echo'<br>';
 									echo'<br>';
 								}
 								
 								else if ($arv['Name'] == ('Raltegravir (RAL, Isentress)')){
 									
-									echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
+									echo '<span><input type="radio" name="extra" value="',$arv['SName'],'" >',$arv['Name'],'';
 									echo'<br>';
 									echo'<br>';
 								}		
 							}
-							echo '<div id="submit-buttons">';
-								echo '<input type="submit" value="Continue">'; 
-							echo '</div>';	
 						}
 						
 						else if (($agey == 3 && $agem >= 0) || ($agey<12 and $agey>3)) {
-							echo'<b>CHOOSE TWO NRTIs</b>';
-							echo'<br>';
-							echo'<br>';
 							
-							foreach ($result as $arv) {
-							
-								if ($arv['Type'] == ('NRTI' || 'NRTI (rare)')){
-									echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
-									echo'<br>';
-									echo'<br>';
-								}		
-							}
 							
 							echo '<b>CHOOSE ONE</b>';
 							echo '<br>';
 							echo '<br>';
 							
-							foreach ($result2 as $arv) {
+							foreach ($result3 as $arv) {
 								
 								if ($arv['Name'] == ('Lopinavir/Ritonavir (LPV/r, Kaletra)')){
 										
-										echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
+										echo '<span><input type="radio" name="extra" value="',$arv['SName'],'" checked >',$arv['Name'],'';
 										echo'<br>';
 										echo'<br>';
 									}
 									
 								else if ($arv['Name'] == ('Raltegravir (RAL, Isentress)')){
 									
-									echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
+									echo '<span><input type="radio" name="extra" value="',$arv['SName'],'" >',$arv['Name'],'';
 									echo'<br>';
 									echo'<br>';
 								}
 								
 								else if ($arv['Name'] == ('Efavirenz (EFV, Sustiva)')){
 									
-									echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
+									echo '<span><input type="radio" name="extra" value="',$arv['SName'],'" >',$arv['Name'],'';
 									echo'<br>';
 									echo'<br>';
 								}
 								
 								else if ($arv['Name'] == ('Atazanavir (ATV, Reyataz)')){
 									
-									echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
+									echo '<span><input type="radio" name="extra" value="',$arv['SName'],'" >',$arv['Name'],'';
 									echo'<br>';
 									echo'<br>';
 								}
 								
 								else if ($arv['Name'] == ('Darunavir (DRV, Prezista)')){
 									
-									echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'(twice daily)';
+									echo '<span><input type="radio" name="extra" value="',$arv['SName'],'" >',$arv['Name'],'(twice daily)';
 									echo'<br>';
 									echo'<br>';
 								}
 								
 							}
-							echo '<div id="submit-buttons">';
-								echo '<input type="submit" value="Continue">'; 
-							echo '</div>';	
 							
 						}
 						
 						else if (($agey >= 12) && (($tanner == 1) || ($tanner == 2) || ($tanner == 3))) {
-							echo'<b>CHOOSE TWO NRTIs</b>';
-							echo'<br>';
-							echo'<br>';
 							
-							foreach ($result as $arv) {
-							
-								if ($arv['Type'] == ('NRTI' || 'NRTI (rare)')){
-									echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
-									echo'<br>';
-									echo'<br>';
-								}		
-							}
 							
 							echo '<b>CHOOSE ONE</b>';
 							echo '<br>';
 							echo '<br>';
 							
-							foreach ($result2 as $arv) {
+							foreach ($result3 as $arv) {
 								
 								if ($arv['Name'] == ('Dolutegravir (DTG, Tivicay)')){
 										
-										echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
+										echo '<span><input type="radio" name="extra" value="',$arv['SName'],'" checked >',$arv['Name'],'';
 										echo'<br>';
 										echo'<br>';
 									}
 									
 								else if ($arv['Name'] == ('Elvitegravir (EVG, VITEKTA)')){
 									
-									echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
+									echo '<span><input type="radio" name="extra" value="',$arv['SName'],'" >',$arv['Name'],'';
 									echo'<br>';
 									echo'<br>';
 								}
 								
 								else if ($arv['Name'] == ('Darunavir (DRV, Prezista)')){
 									
-									echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'(once daily)';
+									echo '<span><input type="radio" name="extra" value="',$arv['SName'],'" >',$arv['Name'],'(once daily)';
 									echo'<br>';
 									echo'<br>';
 								}
 								
 								else if ($arv['Name'] == ('Atazanavir (ATV, Reyataz)')){
 									
-									echo '<span><input type="checkbox" name="',$arv['SName'],'" value="',$arv['SName'],'" >',$arv['Name'],'';
+									echo '<span><input type="radio" name="extra" value="',$arv['SName'],'" >',$arv['Name'],'';
 									echo'<br>';
 									echo'<br>';
 								}
 							}
 							
-							echo '<div id="submit-buttons">';
-								echo '<input type="submit" value="Continue">'; 
-							echo '</div>';	
+							
 						}
 					?>  
 				</p>
 				
 
-				
+				<div id="submit-buttons">
+					<input type="submit" value="Continue"> 
+				</div>
 			</fieldset>
 			
 		</form>
+			
 		
 		<div id="return"> 
 			<a href="main.html"> Return to Home </a>
