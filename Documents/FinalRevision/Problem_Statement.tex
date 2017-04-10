@@ -1,0 +1,63 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{tcolorbox}
+\usepackage{textcomp}
+
+\begin{document}
+
+\begin{titlepage}
+	\centering
+	{\scshape\LARGE McMaster University \par}
+	\vspace{1.5cm}
+	{\huge\bfseries Problem Statement\par}
+    {\scshape\Large Revision 1 \par}
+
+	\vspace{1cm}
+	{\scshape\Large Capstone Team 14\par}
+	{\Large\itshape Ananthan Kanagasabai, Andrei Ciontea, Curran Tam, Joseph Nguyen, Victor Siu \par}
+	\vspace{3cm}
+	\vfill
+	supervised by\par
+	Dr.Sarah Khan, Wenbo He
+
+	\vfill	
+{\large \today\par}
+\end{titlepage}
+
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Background Information}
+17 HIV Antiretroviral (ARV) medications have been approved for use in children. This results in various regimens available for use, as usually most children need to be on 3 medications at once. There are many factors to consider when initiating ARVs in children as many medications
+have different toxicities and side effects (including affecting growth, hormones, kidneys etc). Also, certain viruses may be resistant to some medications and not others. Some medications will interact with other HIV or non HIV medications. Some medications come in liquids, dissolvable tablets, or pills which can affect what age children can take them or not. Also, FDA approval for certain medications depends on: age, weight etc. Drug insurance will only cover some medications. Therefore, it is very challenging to decide on a regimen given the multiple permutations.
+
+\section{Motivation of the Project}
+By creating a solution for this regimen issue, we can improve efficiency, reduce human error, and provide an optimal and detailed regimen when medical teams need to decide on prescriptions for HIV patients. Creating this website will also help decrease the amount of time required for a doctor to come up with a medication regimen for a child. The doctor will be able to use the saved time for other important tasks and the patient will also receive their prescription at a sooner time.
+
+\section{Challenges}
+Some of the obstacles that we will need to overcome include:
+\begin{itemize}
+\item Developing the algorithm for regimen selection
+\item Compiling all the information needed on each ARV medication
+\item Developing the web application
+\item Making the interface as user-friendly as possible
+\item Hosting the website on a server
+\item Ensuring correctness of stored data and efficiency of data accesses
+\end{itemize}
+Developing the algorithm will likely be the most time consuming and the core of our project. This will be based on all the medical information being compiled properly and coded in the android application accordingly.
+
+\section{Detailed Objectives}
+We will begin by meeting with our external supervisor to organize and compile all medical information needed to begin the  development of our web application. A static nonfunctional prototype will be created as a draft and framework to work on. Once the shell is created, we will begin developing our algorithm by compiling the information provided by our external supervisor into a database. User accounts are not necessary as the generator merely takes in an input of medical information and outputs medical regimens. Secure or user-sensitive information will not be stored.
+
+\section{Assumptions}
+The project will be completed using web technologies and the end product will be a web application. General users of this application will be doctors and patients looking into HIV medication prescriptions. We are making the assumption that the doctor owns a computer that can run a basic web browser.
+
+\section{Constraints}
+A major constraint is that the medical information being used for the website will be limited to the knowledge that is available during the time of development. Any new information made available by the medical community will not be added to the website when development ceases unless we continue to update the website after the 8 months we are allotted to work on the project.
+
+
+\end{document}

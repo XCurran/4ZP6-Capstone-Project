@@ -1,0 +1,176 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{vhistory}
+
+
+\begin{document}
+
+\begin{titlepage}
+	\centering
+	{\scshape\LARGE McMaster University \par}
+	\vspace{1.5cm}
+	{\huge\bfseries Test Report \par}
+	{\scshape\Large Revision 1 \par}
+
+	\vspace{1cm}
+	{\scshape\Large Capstone Team 14\par}
+	{\Large\itshape Ananthan Kanagasabai, Andrei Ciontea, Curran Tam, Joseph Nguyen, Victor Siu \par}
+	\vspace{3cm}
+	\vfill
+	supervised by\par
+	Dr.Sarah Khan, Wenbo He
+
+	\vfill
+	{\large \today\par}
+\end{titlepage}
+
+\newpage
+\tableofcontents
+
+
+\section*{Revision History}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Date}  & \textbf{Comments} \\ \hline
+March 26, 2017 & Revision 0 of Test report created \\ 
+\hline
+April 9, 2017 & Correction and Final Revision\\
+\hline
+\end{tabular}
+
+\newpage
+\section{Introduction}
+This test report details the results of the systems tests performed on the HIV Regimen Generator. It includes the non-functional tests performed, including: usability, performance and robustness testing.
+
+\section{Automated Testing}
+Automated testing was not used for this project. Since the project involved accessing information from an SQL database and checking for correctness, it was decided that the testing would be done better and more efficient if inputs and outputs were examined manually.The output of the generator is in a String format throughout the web page, so the group decided that manual testing would be more efficient.
+
+\section{System Tests}
+\subsection{Landing Page}
+    \begin{tabular}{ |p{0.5cm}|p{1.5cm}|p{3cm}|p{2cm}|p{2.5cm}|p{2.5cm}|p{1cm}|}
+    \hline
+    \textbf{No.} & \textbf{Test Case} & \textbf{Initial State} & \textbf{Input} & \textbf{Expected Output} & \textbf{Actual Output} & \textbf{Result} \\ \hline
+1.1 & Landing Page & Empty web browser opened with Internet Explorer, Google Chrome, and Mozilla Firefox & Opening our web application (HRG.org) & Web application opens on corresponding browser successfully. & As expected &  PASS \\ \hline
+1.2 & Landing Page & Landing page opened up in browser & Press Start Button & Go to the Form page & As expected & PASS \\ \hline 1.3 & Landing Page & Landing page opened up in browser & Press About Button & Go to the About page & As expected & PASS \\ \hline
+    \end{tabular}
+
+\subsection{About}
+\begin{center}
+    \begin{tabular}{ |p{0.5cm}|p{1.5cm}|p{3cm}|p{2cm}|p{2.5cm}|p{2.5cm}|p{1cm}|}
+    \hline
+    \textbf{No.} & \textbf{Test Case} & \textbf{Initial State} & \textbf{Input} & \textbf{Expected Output} & \textbf{Actual Output} & \textbf{Result} \\ \hline
+ 2.1 & About & About page & Press the Home button & Go to Home page. & As expected &  PASS \\ \hline
+    \end{tabular}
+\end{center}
+\newpage
+\subsection{Patient Information Form}
+\begin{center}
+    \begin{tabular}{ |p{0.5cm}|p{1.5cm}|p{3cm}|p{2cm}|p{2.5cm}|p{2.5cm}|p{1cm}|}
+    \hline
+    \textbf{No.} & \textbf{Test Case} & \textbf{Initial State} & \textbf{Input} & \textbf{Expected Output} & \textbf{Actual Output} & \textbf{Result} \\ \hline
+ 3.1 & Patient Information Form & Height and weight empty fields. & Enter height and weight. Press the Calculate BSA button. & Display the BSA value in BSA field. & As expected &  PASS \\ \hline
+ 3.2 & Patient Information Form & Empty form & Press submit button & Error message; asking user to fill in the required fields & As expected &  PASS \\ \hline
+ 3.3 & Patient Information Form & Enter only the required & Press the submit button & Go to Combination Selection page & As expected &  PASS \\ \hline
+ 3.4 & Patient Information Form & All required information filled out in the form. Leave non required information empty & Press the submit button & Go to the Combination Selection page & As expected &  PASS \\ \hline
+ 3.5 & Patient Information Form & Form page open in browser & Press the Home button & Go to Home page. & As expected &  PASS \\ \hline
+ 3.6 & Patient Information Form & Form page open in browser & Press the About button & Go to About page & As expected &  PASS \\ \hline
+    \end{tabular}
+\end{center}
+\newpage
+\subsection{Combination Selection}
+\begin{center}
+    \begin{tabular}{ |p{0.5cm}|p{2.5cm}|p{3cm}|p{2cm}|p{2.5cm}|p{2.5cm}|p{1cm}|}
+    \hline
+    \textbf{No.} & \textbf{Test Case} & \textbf{Initial State} & \textbf{Input} & \textbf{Expected Output} & \textbf{Actual Output} & \textbf{Result} \\ \hline
+4.1 & Combination Selection & Empty Combination Selection page & Select the required fields; pick two from the first group, and one from the second, and press submit & Go to medical results page & As expected &  PASS \\ \hline
+4.2 & Combination Selection & Combination page opened up in browser & Press the Home button & Go to Home page & As expected &  PASS \\ \hline
+4.3 & Combination Selection & Empty Combination Selection page & Select more from the fields than required & Display error message; please only select exactly two from the first group, and exactly one from the second & As expected &  PASS \\ \hline
+4.4 & Combination Selection & Combination Selection page open in browser & Press Home button & Go to Home page & As expected &  PASS \\ \hline
+4.5 & Combination Selection & Combination Selection page open in browser & Press About button & Go to About page & As expected &  PASS \\ \hline
+    \end{tabular}
+\end{center}
+\newpage
+\subsection{Medical Results}
+\begin{center}
+    \begin{tabular}{ |p{0.5cm}|p{1.5cm}|p{3cm}|p{2cm}|p{2.5cm}|p{2.5cm}|p{1cm}|}
+    \hline
+   \textbf{No.} & \textbf{Test Case} & \textbf{Initial State} & \textbf{Input} & \textbf{Expected Output} & \textbf{Actual Output} & \textbf{Result} \\ \hline
+5.1 & Medical Results & Result page opened up in browser & Press the link from the drugs information in Patient’s selected regimen field & Go to drugs information website & As expected &  PASS \\ \hline
+5.2 & Medical Results & Select the correct required fields & Press submit  & Medical results page lists the correct medications as previously selected & As expected &  PASS \\ \hline
+5.3 & Medical Results & Result page opened up in browser & Press the Home button & Go to Home page & As expected &  PASS \\ \hline
+5.4 & Medical Results & Medical Results page open in browser & Press About button & Go to About page & As expected &  PASS \\ \hline
+    \end{tabular}
+\end{center}
+
+\section{Non-Functional Tests}
+\subsection{Usability}
+The usability of HIV Regimen Generator was evaluated using test participants. The participants were given a set of tasks as follows: 
+\begin{enumerate}
+\item Fill out medical information on the Patient Information Form
+\item Select one of the generated results to be used by the patient
+\item Navigate to the about page and then to the home page
+\end{enumerate}
+The given tests were sufficient enough to gather the necessary information required to analyze the usability of our HIV regimen generator. 
+
+\subsubsection{Results}
+Among the test participants, all of them were able to complete the form and receive a list of medical combinations to choose from. Upon selecting, all participants were able to view the details of their selected regimen and given an option to print the details of the medication found in their regimen. 
+
+On average, the performance of the given usability test was as expected. User's of the website took on average 1 to 2 minutes to complete the form and select a generated regimen. 
+
+\subsubsection{Discussion}
+Overall, the process of generating an HIV regimen based on the given patient information is simple and easy to understand. The process requires filling out a basic web-form (that almost all frequent users of the Internet are now familiar with) and the regimen generator will match its parameters with suitable choices to present to the user. 
+
+The target audience for the web application includes doctors and potential patients. It is not intended for an average Internet user because a doctor's input is critical in evaluating and prescribing any medical regimen. An average user without proper medical background might not understand the requirements of an HIV regimen to select the appropriate medical combinations provided, but that is a minor issue. 
+
+The application’s medical database is updated as it is developed. We do not plan on making any further updates/adjustments to the list of existing medications, so this might surface as a problem in the future as inaccurate information. The application will specify when the last updated date is to provide users with a general idea of the accuracy of our web application. If the group members or the supervisors choose to expand on the website, updating the medical information will be simple.
+
+\subsection{Performance}
+HIV Regimen Generator is able to produce a series of suitable regimen provided that the form is filled with criteria that is deemed correct for a specific medication. Load times are consistent as the number of users that access the server increase and the database remains accurate with information.The performance was tested using Microsoft Edge. Testing was done using the Microsoft Edge Developers tools. The group found that any additional lag will be due to connectivity issues with the server.
+
+\subsection{Robustness}
+HIV Regimen Generator is tested with various browsers on different hardware devices to test its robustness.
+
+\begin{center}
+    \begin{tabular}{ | l | p{3cm} | p{3cm} | p{3cm} | p{1.5cm} |}
+    \hline
+    \textbf{Browser} & \textbf{Device} & \textbf{Look and Feel} & \textbf{Functionalities} & \textbf{Bugs} \\ \hline
+ Microsoft Edge & Computer & As Expected & As Expected & None \\ \hline
+
+\multirow{3}{*}{Mozilla Firefox}
+ & Computer & As Expected & As Expected & None \\
+ & iOS & As Expected (size change) & As Expected & None \\
+ & Android & As Expected (size change) & As Expected & None \\ \hline
+
+\multirow{3}{*}{Google Chrome}
+ & Computer & As Expected & As Expected & None \\
+ & iOS & As Expected (size change) & As Expected & None \\
+ & Android & As Expected (size change) & As Expected & None \\ \hline
+
+\multirow{3}{*}{Opera}
+ & Computer & As Expected & As Expected & None \\
+ & iOS & As Expected (size change) & As Expected & None \\
+ & Android & As Expected (size change) & As Expected & None \\ \hline
+
+\multirow{2}{*}{Safari}
+ & Computer & As Expected & As Expected & None \\
+ & iOS & As Expected (size change) & As Expected & None \\ \hline
+
+    \end{tabular}
+\end{center}
+
+The application is open for public use, and because of that, will not use an account system for the HIV Regimen Generator. Users will not have to worry about leaked medical information as information is managed within that session and that session only. Much of the managing and matching is done through the database.
+
+\section{Summary of Changes}
+The following are changes made as a result of testing:
+\begin{itemize}
+\item Modified the database to remove columns that were unnecessary and combine columns that could be grouped together
+\item Updated the web pages to be more visually appealing
+\end{itemize}
+
+\end{document}

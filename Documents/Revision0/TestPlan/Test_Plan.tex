@@ -1,0 +1,397 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{tcolorbox}
+\usepackage{textcomp}
+
+\begin{document}
+
+\begin{titlepage}
+	\centering
+	{\scshape\LARGE McMaster University \par}
+	\vspace{1.5cm}
+	{\huge\bfseries Test Plan Revision 0 \par}
+
+	\vspace{1cm}
+	{\scshape\Large Capstone Team 14\par}
+	{\Large\itshape Ananthan Kanagasabai, Andrei Ciontea, Curran Tam, Joseph Nguyen, Victor Siu \par}
+	\vspace{3cm}
+	\vfill
+	supervised by\par
+	Dr.Sarah Khan, Wenbo He
+
+	\vfill
+	{\large \today\par}
+\end{titlepage}
+
+\newpage
+
+\tableofcontents
+
+\section*{Revision History}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Date}  & \textbf{Comments} \\ \hline
+November 2, 2017 & Revision 0 of Test Plan created \\ \hline
+March 26, 2017 & Revision 1 of Test Plan created \\ \hline
+\end{tabular}
+
+\newpage
+
+\section{Overview}
+This document will detail the testing that will be done to our website. The document covers:
+\begin{itemize}
+\item Proof of concept in section 2
+\item Testing system components in section 3
+\item Testing requirements in section 4
+\item Timeline of testing in section 5
+\item Testing survey in section 6
+\end{itemize}
+
+\subsection{Test Case Format}
+The testing throughout the document will be arranged using the following outline:
+\begin{tcolorbox}
+\textbf{Test Number:} Number of the test \\ \\
+\textbf{Description:} Explains what the test is about \\ \\
+\textbf{Type}: What class of testing does this fall under \\ \\
+\textbf{Tester(s)}: Which group will be responsible for testing \\ \\
+\textbf{Pass:} What has to happen for this test to be a pass \\ \\
+\end{tcolorbox}
+
+\subsection{Automated Testing}
+Automated testing will be used for some of the requirements of the program, such as response time and bandwidth usage. Other tests to be done include entering variables into the form elements (including valid and invalid variables) and detailing their output.
+
+\subsubsection{Testing Tools}
+The testing tools to be used are:
+\begin{itemize}
+\item Microsoft Edge Developer Tools
+\end{itemize}
+
+\subsection{Manual Testing}
+Manual testing will be done to all components of the website where the website cannot be automated or where the time taken to create an automated test would surpass the time it would take to test it manually. The manual tests will be completed by the developers.
+
+\begin{tcolorbox}
+\textbf{Test 1.3.1:} \\ \\
+\textbf{Description:} Manually test that clicking on links and buttons will direct the user to the correct pages. \\ \\
+\textbf{Type}: Manual \\ \\
+\textbf{Tester(s)}: Developers \\ \\
+\textbf{Pass:} All links successfully redirect the user to the intended page. \\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 1.3.2:} \\ \\
+\textbf{Description:} Test the website with several different screen resolutions. \\ \\
+\textbf{Type}: Manual \\ \\
+\textbf{Tester(s)}: Developers \\ \\
+\textbf{Pass:} The website must be easily read and accessed on multiple devices such as mobile phones, laptops, and larger monitors. \\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 1.3.1.1:} \\ \\
+\textbf{Description:} Test the website on different operating systems. \\ \\
+\textbf{Type}: Manual \\ \\
+\textbf{Tester(s)}: Developers \\ \\
+\textbf{Pass:} The website must be accessible on Windows, Linux and Mac operating systems. \\ \\
+\end{tcolorbox}
+
+\subsubsection{User Experience Testing}
+The manual testing will be done by humans in order for the developers to get an idea of the user experience. Testing will be done individually by people not involved in the development of the website. Each tester will have to complete a survey detailing their experience with the website. Testers will be used multiple times depending on any additions being made to the website.
+
+\begin{tcolorbox}
+\textbf{Test 1.3.3:} \\ \\
+\textbf{Description:} Test that website is usable by the target demographic. \\ \\
+\textbf{Type}: Manual \\ \\
+\textbf{Tester(s)}: Testing Group \\ \\
+\textbf{Pass:} The website must be easy and intuitive to use by users of age 10+ (The website is intended for the use of doctors but testing with a younger age group can guarantee ease of use). \\ \\
+\end{tcolorbox}
+
+\section{Proof of Concept Testing}
+A proof of concept test will be carried out before the website and application will be developed to ensure that it works theoretically. Below are further details of the proof of concept test.
+
+\subsection{Significant Risks}
+Completing the project successfully demands overcoming the following significant risks:
+\begin{enumerate}
+\item The core function of our application requires successful implementation of the required medication found on the medical database, with potential of javascript coding involved.
+\item We intend for our website to be compatible with all common browsers such as Microsoft Edge, Firefox, Google Chrome, as well as iOS and Android devices.
+\item Users will require internet access in order to use the features of the application.
+\end{enumerate}
+
+\subsection{Demonstration Plan}
+For our demonstration we will produce a basic simulation of the website\textquotesingle s process, and how it operates. In this website, you will be able to access a public tool which will be able to develop a schedule for taking prescribed medicine. 
+
+The user will first be met with a form, which will ask for details on a patient’s physical and medical attributes, such as age, sex, build, blood type, etc. After filling out the form,  a suggested schedule for the medication needed will be displayed for the user in a tabular format by the days of the week and hours. In addition, warnings and side effects of the prescribed medication will be listed and made aware for the user.
+
+\subsection{Proof of Concept Test}
+Below is the test case format for the proof of concept.
+
+\begin{tcolorbox}
+\textbf{Test 2.3.1: Proof of Concept} \\ \\
+\textbf{Description:} Tests whether the significant risks presented in the implementation of the operations of our website can be overcome. \\ \\
+\textbf{Type}: Manual \\ \\
+\textbf{Tester(s)}: Developers \\ \\
+\textbf{Pass:} A successful demonstration of a simulated process of operating the website and creating a medical schedule. \\ \\
+\end{tcolorbox}
+
+\section{System Testing}
+The algorithm for our web application will be tested first, as it is the most important feature of the webpage. User experience and UI testing will commence after this.
+
+\subsection{Web Application Mechanics Testing}
+The mechanics of our HIV medication choosing algorithm will be tested in both a manual and automated environment. Manual tests will be performed to mimic the perspective of the users and automated tests will ensure the algorithm\textquotesingle s correctness.
+%%%%%%%%%%%%%%
+
+\subsubsection{Landing Page Testing}
+\begin{tcolorbox}
+\textbf{Test 3.1.1.1: Displaying Website} \\ \\
+\textbf{Description:} Tests whether or not a website can be displayed correctly in a browser. \\ \\
+\textbf{Type}: Manual \\ \\
+\textbf{Tester(s)}: Developers \\ \\
+\textbf{Pass:} Website displays correctly in a browser. \\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 3.1.1.2: Patient Information Form Page} \\ \\
+\textbf{Description: Tests whether someone can access the Patient Information Form page by clicking a button on this page} \\ \\
+\textbf{Type}: Manual \\ \\
+\textbf{Tester(s)}: Developers \\ \\
+\textbf{Pass:} Browser displays Patient Information Form page.  \\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 3.1.1.3: About Page} \\ \\
+\textbf{Description:} Tests whether someone can access the About page by clicking a button on this page \\ \\
+\textbf{Type}: Manual \\ \\
+\textbf{Tester(s)}: Developers \\ \\
+\textbf{Pass:} Browser displays About page. \\ \\
+\end{tcolorbox}
+
+\subsubsection{About Page Testing}
+\begin{tcolorbox}
+\textbf{Test 3.1.2.1: Home Page} \\ \\
+\textbf{Description:} Tests whether someone can access the Home page by clicking a button on this page\\ \\
+\textbf{Type}: Manual \\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:}  Browser displays Home page.\\ \\
+\end{tcolorbox}
+
+\subsubsection{Patient Information Form Page Testing}
+\begin{tcolorbox}
+\textbf{Test 3.1.3.1: Calculate BSA} \\ \\
+\textbf{Description:} Tests whether the BSA can be calculated after a user has entered the height and weight and clicked on the “BSA Calculate” button\\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:}  BSA is displayed correctly\\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 3.1.3.2: No information given} \\ \\
+\textbf{Description:} Tests whether the page will display an error if the required information is not entered\\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:}  Browser displays a message with an error. \\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 3.1.3.3: All information given} \\ \\
+\textbf{Description:} Tests whether the website will display the Combination Selection page when the submit button is pressed after all of the correct information is entered\\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:}  Browser displays the Combination Selection page. \\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 3.1.3.4: Only required information given} \\ \\
+\textbf{Description:} Tests whether the website will display the Combination Selection page when the submit button is pressed after only the required information is entered correctly.\\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:} Browser displays the Combination Selection page. \\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 3.1.3.5: Home Page} \\ \\
+\textbf{Description:} Tests whether someone can access the Home page by clicking a button on this page\\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:}  Browser displays Home page.\\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 3.1.3.6: About Page} \\ \\
+\textbf{Description:} Tests whether someone can access the About page by clicking a button on this page\\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:}  Browser displays About page.\\ \\
+\end{tcolorbox}
+
+\subsubsection{Combination Selection Page Testing}
+\begin{tcolorbox}
+\textbf{Test 3.1.4.1: Properly Select Regimen} \\ \\
+\textbf{Description:} Tests whether the website will display the Medical Results page when the submit button is pressed after all of the correct information is entered\\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:}  Browser displays the Medical Results page.\\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 3.1.4.2: All information given} \\ \\
+\textbf{Description:} Tests whether the website will display the Combination Selection page when the submit button is pressed after all of the correct information is entered \\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:} Browser displays the Combination Selection page.\\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 3.1.4.3: Too much information given} \\ \\
+\textbf{Description:} Tests whether the website will display an error when the submit button is pressed after too much information is entered \\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:} Browser displays the an error.\\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 3.1.4.4: Home Page} \\ \\
+\textbf{Description:} Tests whether someone can access the Home page by clicking a button on this page \\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:} Browser displays Home page.\\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 3.1.4.5: About Page} \\ \\
+\textbf{Description:} Tests whether someone can access the About page by clicking a button on this page \\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:} Browser displays About page.\\ \\
+\end{tcolorbox}
+
+\subsubsection{Medical Results Page Testing}
+\begin{tcolorbox}
+\textbf{Test 3.1.5.1: Link Works} \\ \\
+\textbf{Description:} Tests whether the website will display the correct website after a link is clicked on the page. \\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:} Browser displays the correct website.\\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 3.1.5.2: Home Page} \\ \\
+\textbf{Description:} Tests whether someone can access the Home page by clicking a button on this page \\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:} Browser displays Home page.\\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 3.1.5.3: About Page} \\ \\
+\textbf{Description:} Tests whether someone can access the About page by clicking a button on this page \\ \\
+\textbf{Type}:  Manual\\ \\
+\textbf{Tester(s)}:  Developers\\ \\
+\textbf{Pass:} Browser displays About page.\\ \\
+\end{tcolorbox}
+
+\section{Requirements Testing}
+After completing the implemention of the system, the developers will perform testing to ensure that the application will fulfill all requirements mentioned in the Requirements Document.
+
+\subsection{Functional Requirements Testing}
+All of the functional requirements in the Requirements Document should be implemented in the final vision of the application. In order to be readable for the testing, the testers will use the testing checklist to ensure that the functional requirements would be fulfilled.
+
+\begin{tcolorbox}
+\textbf{Test 4.1.1: Functional requirements } \\ \\
+\textbf{Description:} Compare the end product with the software requirements document and make sure all features have been implemented. \\ \\
+\textbf{Type}: Functional \\ \\
+\textbf{Tester(s)}: Developers \\ \\
+\textbf{Pass:} This test passes if all listed functional requirements from the software requirements documents are present in the end product. \\ \\
+\end{tcolorbox}
+
+\subsection{Non-Functional Requirements Testing}
+The following tests display the non-functional requirements in the Requirements Document that should be fulfilled in the final version of the application. 
+
+\begin{tcolorbox}
+\textbf{Test 4.2.1: Web Browser Support} \\ \\
+\textbf{Description:} The website runs on all major web browsers (i.e. Firefox, Google Chrome, etc.). \\ \\
+\textbf{Type}: Functional \\ \\
+\textbf{Tester(s)}: Functional \\ \\
+\textbf{Pass:} This test passes when the website is accessed and used on all listed web browsers. \\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 4.2.2: Language, Spelling and Grammar} \\ \\
+\textbf{Description:} The language in used in the website is English and there are no spelling errors. \\ \\
+\textbf{Type}: Functional \\ \\
+\textbf{Tester(s)}: Developers \\ \\
+\textbf{Pass:} Autocorrect must not detect any spelling errors on the website. \\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 4.2.3: Hardware} \\ \\
+\textbf{Description:} The website can run on a mobile device(i.e. Laptop, cellphone, etc). \\ \\
+\textbf{Type}: Functional \\ \\
+\textbf{Tester(s)}: Developers \\ \\
+\textbf{Pass:} The user can access the website by using laptop and cellphone. \\ \\
+\end{tcolorbox}
+
+\subsubsection{User Experience Testing}
+The testing group will test the website to ensure that the following non-functional requirements will be fulfilled.
+
+\begin{tcolorbox}
+\textbf{Test 4.2.1.1: Location} \\ \\
+\textbf{Description:} The user can access the website anywhere. \\ \\
+\textbf{Type}: Functional  \\ \\
+\textbf{Tester(s)}: Testing group \\ \\
+\textbf{Pass:} The users can access the website if their mobile device can connect to the wifi. \\ \\
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Test 4.2.1.2: Safety-Critical } \\ \\
+\textbf{Description:} Private information about patients is only viewed by the users. \\ \\
+\textbf{Type}: Functional  \\ \\
+\textbf{Tester(s)}: Testing group \\ \\
+\textbf{Pass:} The private information about patients can be viewed only if the user login. Only user can be access and modify the medical information of patients. \\ \\
+\end{tcolorbox}
+
+\newpage
+
+\section{Testing Timeline}
+This document roughly outlines the testing timeline that will be followed. All items are arranged in chronological order.
+
+\begin{longtable}{|p{5cm}|p{5cm}|p{5cm}|}
+\hline
+\textbf{Completion Date} & \textbf{Responsible Party} & \textbf{Task} \\
+\hline
+21/11/2017 - 25/11/2017 & Developers  & Complete proof of concept demo \\
+\hline
+Late February 2017 Tentative & Developers  & Automated test cases \\
+\hline
+Late February 2017 Tentative & Developers  & Manual test cases \\
+\hline
+Early March 2017 Tentative & Testers & Complete user experience survey part 1 \\
+\hline
+Late March 2017 Tentative & Testers & Complete user experience survey part 2 \\
+\hline
+
+\caption{Testing Timeline}
+\label{tab:testtimeline}
+\end{longtable}
+
+\newpage
+
+\section{Appendix A: Testing Survey}
+The testing survey will be completed by two groups. The first group will give us any feedback regarding the website. The second group will give any feedback regarding the updates.
+
+\begin{tcolorbox}
+This survey will be completed after using the application for 5 minutes.
+
+Provide a rank between 0 and 5 for the following categories:
+
+\textbf{Ease of use:} 0\quad1\quad2\quad3\quad4\quad5 (5 being the easiest)
+
+\textbf{Navigation:} 0\quad1\quad2\quad3\quad4\quad5 (5 being the easiest)
+
+\textbf{Visual Appeal:} 0\quad1\quad2\quad3\quad4\quad5 (5 being very appealing)
+
+\textbf{Utility:} 0\quad1\quad2\quad3\quad4\quad5 (5 being very useful)
+
+\end{tcolorbox}
+
+\end{document}
