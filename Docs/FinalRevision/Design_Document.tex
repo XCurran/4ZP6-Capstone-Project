@@ -1,0 +1,203 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage{float}
+\usepackage{vhistory}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+
+\begin{titlepage}
+	\centering
+	{\scshape\LARGE McMaster University \par}
+	\vspace{1.5cm}
+	{\huge\bfseries Design Document \par}
+    {\scshape\Large Revision 1 \par}
+
+	\vspace{1cm}
+	{\scshape\Large Capstone Team 14\par}
+	{\Large\itshape Ananthan Kanagasabai, Andrei Ciontea, Curran Tam, Joseph Nguyen, Victor Siu \par}
+	\vspace{3cm}
+	\vfill
+	supervised by\par
+	Dr.Sarah Khan, Wenbo He
+
+	\vfill
+	{\large \today\par}
+\end{titlepage}
+
+\newpage
+
+\tableofcontents
+\listoffigures
+
+\section*{Revision History}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Date}  & \textbf{Comments} \\ \hline
+January 11, 2017 & Revision 0 of Design Document created \\ 
+\hline
+April 9, 2017 & Correction and Final Revision\\
+\hline
+\end{tabular}
+
+\newpage
+
+
+\section{User Interface Elements Description}
+The following section provides a description of the user interface (UI) design for the HIV Regimen Generator. The section is divided into subsections of the UI navigation flow and major UI elements. Each UI element is explained and illustrated with screen images based on Norman’s design principles. A brief explanation of Norman’s design principles is provided to help better understand and reinforce HIV Regimen Generator’s UI design principles.
+
+\subsection{Navigation Flow}
+When the user enters the URL into their web browser, they are first directed to the the landing page (also referred to as the home page). From the home page, the user will be able to access the About page, the Contact Us page, or the Patient Information form. If the “Start Here” button is clicked on the home page, the user will be redirected to the Patient Information form where they will be asked to fill out a form in order to specify the type of patient taking the medication (age, weight, etc.) as well as additional medical issues and/or resistances to common HIV medications. Once the form has been filled and the user clicks the submit button, they will be taken to the Combination Selection page, which contains a list of compatible medical regimens generated based on the information provided in the patient form. Once a  regimen has been selected, the user will be brought to the Medical Results page which will provide more details and specifications of the selected regimen, as well as the option to print the page.
+
+\subsection{Norman’s Design Principles}
+Don Norman’s The Design of Everyday Things [1] lists six design principles that apply to software usability. These principles are visibility, affordances, mappings, constraints, feedback, and a conceptual model. These principles help create the framework of the design of this website.
+
+\begin{enumerate}
+\item Visibility conveys currently necessary information to the user as well as their possible actions [1].
+\item Affordances are visual prompts to the user which helps them determine how an object or control can be used [1].
+\item Mapping is the function of a control and its effect [1].
+\item Constraints are restrictions put on an object or control used by the user [1].
+\item Feedback is information that is returned to the user to confirm that an action has been taken and what actions can be taken next [1].
+\item Conceptual models are the understanding of an interface of interaction based on real-world experience [1].
+\end{enumerate}
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics{navflow.png}
+  \caption{Diagram of HIV Regimen Generator UI Navigation Flow}
+  \label{fig:Diagram of HIV Regimen Generator UI Navigation Flow}
+\end{figure}
+
+\subsection{Landing Page}
+The landing page is the “home” page of the website, where the: title, logo, and the navbar containing other valuable links will be displayed. From this page, the user will be able to begin using our application by clicking the “Start Here” button found in the middle of the page.
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=\linewidth]{landing.png}
+  \caption{Screen image of Landing page}
+  \label{fig:landing}
+\end{figure}
+
+\subsection{About}
+The “About” link in the navigation bar will redirect the user to the about page. It will be used to inform users about the purpose and functionality of the web application. The about page will provide necessary background information, as well as detailed instructions on how to correctly fill the patient form and select a compatible regimen.
+
+\subsection{Patient Information Form}
+The purpose of the Patient information form is to gather relevant information from the doctor or user about the patient that will be using the generated medical regimen. The information required is: age, height, weight, tanner stage, HLA status, medical issues, resistance to medications, types of medication the patient can take and relevant allergies. The BSA, which is the body surface area used to calculate safe doses of a medication, can also be calculated on this page with the data provided by the client. This is the page where the data is stored before the database is called to retrieve possible medication combinations for the patient.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{form1.png}
+ \caption{Screen image of Patient Information page}
+  \label{fig:form1}
+\end{figure}
+
+\subsection{Combination Selection}
+Once the patient's information is filled out on the form page, our algorithm will generate a list of compatible medical regimen to be administered to the patient in the form of radio buttons on the combination selection page. Each of the combinations will be grouped in groups of two or three medications to form a singular combination drug. The user will be prompted to click on the radio button of which combination drug that they would like to use and the continue button will be clicked to confirm.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{combo.png}
+  \caption{Screen image of Combination Selection page}
+  \label{fig:combo}
+\end{figure}
+
+\subsection{Medical Results}
+The medical results page will follow the combination selection page. It gives the user a more detailed description of each of the medications present in the selected regimen. It will also include valuable information such as a suggested dosage and relevant special instructions for usage. The user will have the option to print out this page through a button found on the bottom of the page.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{results1.png}
+  \caption{Screen image of Medical Results page}
+  \label{fig:results1}
+\end{figure}
+
+\section{Module Decomposition}
+
+\subsection{Form page}
+The algorithm for our web application will be tested first, as it is the most important feature of the web page. User experience and UI testing will commence after this.
+\begin{itemize}
+\item Stores any relevant patient information with the information given by the client
+\item \textbf {\$years} - stores the age of the patient (years)
+\item \textbf{\$months)} - stores the age of the patient (months)
+\item \textbf{\$weight} - stores the weight of the patient
+\item \textbf{\$bsa} - stores the BSA that is calculated using the height and weight
+\item \textbf{\$tannerStage} - stores the Tanner stage of the patient
+\item \textbf{\$HLA-status} - stores the HLA status of the patient
+\item \textbf{\$other-allergies} - stores any allergies the patient may have
+\end{itemize}
+
+\subsection{Combo page}
+\begin{itemize}
+\item Creates different combinations of medicine for the user to take
+\item \textbf{\$arv['SName']} - retrieves a shorter name of the ARV that is used for naming the radio buttons
+\item \textbf{\$arv['Name']} - retrieves the full name of the ARV
+\item \textbf{check()} - JavaScript functions that checks that the two NRTIs selected are different
+\end{itemize}
+
+
+\subsection{Results page}
+\begin{itemize}
+\item Displays all relevant information to the client
+\item \textbf{\$Regimen['Name']} - retrieves the full name of the ARV
+\item \textbf{\$Regimen['Type']} - retrieves the type of the ARV
+\item \textbf{\$Regimen['Formulations']} - retrieves the form of the ARV
+\item \textbf{\$Regimen['Fixed Dose Combination Tablets']} - retrieves any necessary information related to combinations with the ARV
+\item \textbf{\$Regimen['Treatment of HIV Infection']} - retrieves any information based on any extra steps to treat a patient
+\item \textbf{\$Regimen['Formulations']} - retrieves the form of the ARV
+\item \textbf{\$Regimen['Neonate (birth to <3 months)']} - retrieves information related to how the formula will be used with that specific age range
+\item \textbf{\$Regimen['Infant (3 months to 8 months)']} - retrieves information related to how the formula will be used with that specific age range
+\item \textbf{\$Regimen['Pediatric (8 months to 6 years old)']} - retrieves information related to how the formula will be used with that specific age range
+\item \textbf{\$Regimen['Adolescent (6 years old - 17 years old)']} - retrieves information related to how the formula will be used with that specific age range (this age range goes up until 18 years old)
+\item \textbf{\$Regimen['Adult (18 years old+)']} - retrieves information related to how the formula will be used with that specific age range
+\item \textbf{\$Regimen['Special Instructions']} - retrieves any special instructions or warning about using the ARV
+
+\end{itemize}
+
+\section{Relational Database Structure}
+
+\subsection{ER Diagram}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{ERdiagram.png}
+  \caption{ER-Diagram}
+  \label{fig:er}
+\end{figure}
+
+\subsection{Table Descriptions}
+\begin{itemize}
+\item \textbf{medication\_table} - stores information about the medication such as its type and description of use (Name, type, description, other relevant information)
+\end{itemize}
+
+\section{Communication Protocol}
+This application uses Hypertext Transfer Protocol (HTTP) to communicate between web page and server. HTTP is an application protocol for distributed, collaborative, hypermedia information systems. It also uses PHP to communicate to an SQL database where the medical information is stored and sorted based on patient conditions.
+
+
+\section{Development Details}
+
+\subsection{Languages of implementation}
+\begin{itemize}
+\item HTML
+\item CSS
+\item PHP
+\item JavaScript
+\item SQL
+\end{itemize}
+
+\subsection{Supporting technology}
+\begin{itemize}
+\item Apache server
+\item MySQL
+\item Amazon Web Service
+\item Web Browser (Chrome, IE, Firefox)
+\end{itemize}
+
+\section{References}
+[1] Don Norman. The Design of Everyday Things - Revised and Expanded Edition. Basic
+Books, New York, 10-131, 2013.
+
+\end{document}
