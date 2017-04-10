@@ -47,8 +47,12 @@
 	$_SESSION['height'] = $_POST['height'];
 	$_SESSION['tanner-stage'] = $_POST['tanner-stage'];
 	$_SESSION['HLA-status'] = $_POST['HLA-status'];
-	$_SESSION['med-issues'] = $_POST['med-issues'];
-	$_SESSION['allergies'] = $_POST['allergies'];
+	if (isset($_SESSION['med-issues'])) {
+		$_SESSION['med-issues'] = $_POST['med-issues'];
+	}
+	if (isset($_SESSION['allergies'])) {
+		$_SESSION['allergies'] = $_POST['allergies'];
+	}
 	$_SESSION['other-allergies'] = $_POST['other-allergies'];
 	
 	
