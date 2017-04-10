@@ -28,37 +28,45 @@
 			<ul id="headerul">
 				<!--listing all the options on the header-->
 				<li class="headerli"> <a href="main.html"> Home </a> </li>
-				<li class="headerli"> About </li>
-				<li class="headerli"> Contact Us </li>
+				<li class="headerli"> <a href="about.html"> About  </a> </li>
 			</ul>
 		</div>
+		
+		 <!-- Session variables are displayed here. -->
 		
 		<br>
 		<fieldset id="patinfo">
 			<legend> Patient Information </legend>
-			<b> Age: </b> <?php session_start(); echo $_SESSION['years'] ?>  Years and <?php echo $_SESSION['months']; ?> Months. <br>
-			<b> BSA: </b> <?php echo $_SESSION['bsa']; ?> <br>
-			<b> Weight: </b> <?php echo $_SESSION['weight']; ?> kilograms (kg)  &nbsp;&nbsp; <b> Height: </b> <?php echo $_SESSION['height']; ?> centimetres (cm) <br><br>
-			<b> Tanner stage: </b> <?php echo $_SESSION['tanner-stage']; ?> &nbsp;&nbsp; <b> HLA status: </b> <?php echo $_SESSION['HLA-status']; ?> <br><br>
-			<b> Medical Issues: </b> 
-			
 			<?php
-				
-				if (isset($_SESSION['med-issues'])) {
-					echo $_SESSION['med-issues'];
-				}
-				
-			?>
+			session_start();
+			if ($_SESSION["years"] != Null && $_SESSION["months"] != Null) {
+				echo '<b> Age: </b> ',$_SESSION["years"],'  Years and ',$_SESSION["months"],' Months. <br><br>';
+			}
 			
+			if ($_SESSION['bsa'] != Null) {
+				echo '<b> BSA: </b> ',$_SESSION["bsa"],' <br><br>';
+			}
 			
+			if ($_SESSION['weight'] !=Null) {
+				echo '<b> Weight: </b> ',$_SESSION["weight"],'  kilograms (kg) <br><br>';
+			}
 			
-				
-			<br><br>
-			<b>Patient prefers medicine: </b>
-			<b> Allergies: </b> n/a <br> <br>
-			<b> Additional Notes: </b> n/a <br>
+			if ($_SESSION['height'] !=Null) {
+				echo '<b> Height: </b> ',$_SESSION["height"],' centimetres (cm) <br><br>';
+			}
 			
+			if ($_SESSION['tanner-stage'] != 'Null') {
+				echo '<b> Tanner stage: </b> ',$_SESSION["tanner-stage"],' <br><br>';
+			}
 			
+			if ($_SESSION['HLA-status'] != 'Null') {
+				echo '<b> HLA status: </b> ',$_SESSION["HLA-status"],' <br><br>';
+			}
+			
+			if ($_SESSION['other-allergies'] != Null) {
+				echo '<b> Additional Notes: </b> </b> ',$_SESSION["other-allergies"],' <br><br>';
+			}
+		?>
 		</fieldset>
 		<br>
 		
@@ -79,7 +87,8 @@
 		} 
 
 			?>		
-			
+		
+		<!--SQL file is used here to grab information related to the regimen. If statements are used since some ARVs have Null boxes.-->
 	
 		<?php
 			

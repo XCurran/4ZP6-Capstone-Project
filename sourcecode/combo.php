@@ -30,38 +30,46 @@
 		<div id="header">
 			<ul>
 				<!--listing all the options on the header-->
-				<li> <a href="main.html"> Home </a> </li>
-				<li> About </li>
-				<li> Contact Us </li>
+				<li class="headerli"> <a href="main.html"> Home </a> </li>
+				<li class="headerli"> <a href="about.html"> About  </a> </li>
+			
 			</ul>
 		</div>
 		<p id="disclaimer"> *Disclaimer* None of the following information you provide will be stored. All details inputted will be removed immediately after you close the browser. </p>
 
+		<!-- The combo page uses a check() Javascript function to see that the client has not accidentally chosen the same NRTI twice. This page then takes the user to the results page. -->
+		
 		<form onsubmit="return check()" action="results.php" method="post">
+		
+		<!--Session variables and used with a session so that the form variables and taken to the results page and can be displayed there. -->
+		
 		<?php
+		
+
 		session_start();
-    $_SESSION['years'] = $_POST['years'];
-	$_SESSION['months'] = $_POST['months'];
-	$_SESSION['bsa'] = $_POST['bsa'];
-	$_SESSION['weight'] = $_POST['weight'];
-	$_SESSION['height'] = $_POST['height'];
-	$_SESSION['tanner-stage'] = $_POST['tanner-stage'];
-	$_SESSION['HLA-status'] = $_POST['HLA-status'];
-	if (isset($_SESSION['med-issues'])) {
-		$_SESSION['med-issues'] = $_POST['med-issues'];
-	}
-	if (isset($_SESSION['allergies'])) {
-		$_SESSION['allergies'] = $_POST['allergies'];
-	}
-	$_SESSION['other-allergies'] = $_POST['other-allergies'];
+			$_SESSION['years'] = $_POST['years'];
+			$_SESSION['months'] = $_POST['months'];
+			$_SESSION['bsa'] = $_POST['bsa'];
+			$_SESSION['weight'] = $_POST['weight'];
+			$_SESSION['height'] = $_POST['height'];
+			$_SESSION['tanner-stage'] = $_POST['tanner-stage'];
+			$_SESSION['HLA-status'] = $_POST['HLA-status'];
+			$_SESSION['other-allergies'] = $_POST['other-allergies'];
 	
 	
 ?>
 			<fieldset>
 				<legend> Possible Regimen Selections </legend>
 				<div id="combo">
+				
+				<!--The following code uses an SQL table and grabs the necessary information related to the medication that users can combine. The NRTIs are selected by type,
+				while the other medications are checked by name since they are not used for only one combination. Alternative regiments follow different guidelines so they
+				may appear in more than one possible selection.-->
 					<h3> Compatible Regimen: </h3>
-					
+					<!-- result1 is for nrti1
+						 result2 is for nrti2
+						 result3 is for the extra arv
+						 result4, result5 and result6 is for the extra arv in an alternative regimen -->
 					<p> <?php 
 						$user = 'root';
 						$pass = '';
@@ -71,6 +79,9 @@
 							$result = $pdo->query('SELECT * FROM `medication_table`');
 							$result2 = $pdo->query('SELECT * FROM `medication_table`');
 							$result3 = $pdo->query('SELECT * FROM `medication_table`');
+							$result4 = $pdo->query('SELECT * FROM `medication_table`');
+							$result5 = $pdo->query('SELECT * FROM `medication_table`');
+							$result6 = $pdo->query('SELECT * FROM `medication_table`');
 						} catch (PDOException $e) {
 							echo $e->getMessage();
 						}
@@ -78,6 +89,7 @@
 						$agey= $_POST['years'];
 						$agem= $_POST['months'];
 						$tanner= $_POST['tanner-stage'];
+						$weight= $_POST['weight'];
 						
 						echo'<b>CHOOSE THE FIRST NRTI</b>';
 						echo'<br>';
@@ -119,8 +131,7 @@
 								
 							}		
 						}
-							
-						if (($agey == 0 && $agem >= 0.5) || ($agey<2 and $agey>0)){
+						if (($agey == 0 && $agem >= 0.5) || ($agey<2 && $agey>0)){
 									
 							
 							echo'<b>AND</b>';
@@ -135,9 +146,60 @@
 									}
 							}
 							
+							if (($agey == 0 && $agem > 0.5) || ($agey<2 && $agey>0)){
+									
+							
+								echo'<b>ALTERNATIVE REGIMEN 1</b>';
+								echo'<br>';
+								echo'<br>';
+								
+								foreach ($result4 as $arv) {
+									
+									if ($arv['Name'] == ('Nevirapine (NVP, Viramune)')){
+											echo '<span><input type="radio" name="extra" value="',$arv['SName'],'" >',$arv['Name'],'';
+											echo'<br>';
+											echo'<br>';
+										}
+								}
+							}
+							
+							if (($agey == 0 && $agem >= 1 && $weight >=3) || ($agey<2 && $agey>0 && $weight >=3)){
+									
+							
+								echo'<b>ALTERNATIVE REGIMEN 2</b>';
+								echo'<br>';
+								echo'<br>';
+								
+								foreach ($result5 as $arv) {
+									
+									if ($arv['Name'] == ('Raltegravir (RAL, Isentress)')){
+											echo '<span><input type="radio" name="extra" value="',$arv['SName'],'" >',$arv['Name'],'';
+											echo'<br>';
+											echo'<br>';
+										}
+								}
+							}
+							
+							if (($agey == 0 && $agem >= 3 && $weight >=10) || ($agey<2 && $agey>0 && $weight >=10)){
+									
+							
+								echo'<b>ALTERNATIVE REGIMEN 3</b>';
+								echo'<br>';
+								echo'<br>';
+								
+								foreach ($result6 as $arv) {
+									
+									if ($arv['Name'] == ('Atazanavir (ATV, Reyataz)')){
+											echo '<span><input type="radio" name="extra" value="',$arv['SName'],'" >',$arv['Name'],'';
+											echo'<br>';
+											echo'<br>';
+										}
+								}
+							}
+							
 						}
 						
-						else if (($agey == 2 && $agem >= 0) || ($agey<3 and $agey>2)){
+						else if (($agey == 2 && $agem >= 0) || ($agey<3 && $agey>2)){
 							
 							
 							echo '<b>CHOOSE ONE</b>';
@@ -160,9 +222,26 @@
 									echo'<br>';
 								}		
 							}
+							
+							if (($agey == 2 && $agem >= 0) || ($agey<3 && $agey>2)){
+									
+							
+								echo'<b>ALTERNATIVE REGIMEN 1</b>';
+								echo'<br>';
+								echo'<br>';
+								
+								foreach ($result4 as $arv) {
+									
+									if ($arv['Name'] == ('Nevirapine (NVP, Viramune)')){
+											echo '<span><input type="radio" name="extra" value="',$arv['SName'],'" >',$arv['Name'],'';
+											echo'<br>';
+											echo'<br>';
+										}
+								}
+							}
 						}
 						
-						else if (($agey == 3 && $agem >= 0) || ($agey<12 and $agey>3)) {
+						else if (($agey == 3 && $agem >= 0) || ($agey<12 && $agey>3)) {
 							
 							
 							echo '<b>CHOOSE ONE</b>';

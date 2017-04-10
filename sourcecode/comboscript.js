@@ -1,4 +1,6 @@
 
+// The following function goes over every single NRTI (in both columns) and then compares the same ones. If two of the same NRTIs are selected, an error is given and the 
+// combo page does not advance to the results page.
 
 function check() {
 			var v1=document.getElementById("Abacavir");
